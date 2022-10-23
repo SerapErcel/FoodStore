@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FoodStore</string>
+    <string name="confirm_cart">Confirm Cart</string>
 </resources>
