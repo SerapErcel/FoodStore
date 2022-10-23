@@ -7,6 +7,11 @@ android {
     namespace 'com.serapercel.foodstore'
     compileSdk 32
 
+    buildFeatures {
+        viewBinding = true
+        dataBinding true
+    }
+
     defaultConfig {
         applicationId "com.serapercel.foodstore"
         minSdk 21
@@ -31,6 +36,8 @@ android {
         jvmTarget = '1.8'
     }
 }
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 dependencies {
 

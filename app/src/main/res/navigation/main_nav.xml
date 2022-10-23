@@ -21,7 +21,11 @@
         android:id="@+id/detailFragment"
         android:name="com.serapercel.foodstore.ui.fragment.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="food"
+            app:argType="com.serapercel.foodstore.data.entity.Food" />
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.serapercel.foodstore.ui.fragment.CartFragment"
