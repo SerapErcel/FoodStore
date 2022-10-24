@@ -9,8 +9,12 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.serapercel.foodstore.R
+import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.databinding.FragmentHomeBinding
+import com.serapercel.foodstore.ui.adapter.FoodAdapter
 
 class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var binding: FragmentHomeBinding
@@ -22,6 +26,18 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarHome)
 
+        val foodList = ArrayList<Food>()
+        val food = Food("1", "Izgara Somon", "blabla", "35tl")
+        val food1 = Food("1", "Izgara Köfte", "blabla", "45tl")
+        val food2 = Food("1", "Ayran", "blabla", "55tl")
+        foodList.add(food)
+        foodList.add(food1)
+        foodList.add(food2)
+
+        binding.rvHome.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+
+        val adapter = FoodAdapter(requireContext(), foodList)
+        binding.rvHome.adapter = adapter
 
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

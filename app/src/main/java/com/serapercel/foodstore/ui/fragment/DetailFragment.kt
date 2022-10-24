@@ -22,7 +22,14 @@ class DetailFragment : Fragment() {
         val bundle:DetailFragmentArgs by navArgs()
         val tFood = bundle.food
 
+        binding.tvFoodName.text = tFood.yemek_adi
+        binding.tvFoodPrice.text = tFood.yemek_fiyat
+
         binding.toolbarDetail.title = tFood.yemek_adi
+
+        binding.buttonAdd.setOnClickListener {
+
+        }
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarDetail)
 
