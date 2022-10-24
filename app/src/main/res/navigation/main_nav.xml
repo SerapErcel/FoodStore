@@ -25,6 +25,9 @@
         <argument
             android:name="food"
             app:argType="com.serapercel.foodstore.data.entity.Food" />
+        <action
+            android:id="@+id/goToCartFromDetail"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
