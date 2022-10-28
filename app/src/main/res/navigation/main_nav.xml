@@ -28,10 +28,17 @@
         <action
             android:id="@+id/goToCartFromDetail"
             app:destination="@id/cartFragment" />
+        <argument
+            android:name="user"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.serapercel.foodstore.ui.fragment.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <argument
+            android:name="user"
+            app:argType="string" />
+    </fragment>
 </navigation>

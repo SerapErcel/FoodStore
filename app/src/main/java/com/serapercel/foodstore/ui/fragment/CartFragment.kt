@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.serapercel.foodstore.R
 import com.serapercel.foodstore.data.entity.CartFood
@@ -19,6 +20,10 @@ class CartFragment : Fragment() {
         binding = FragmentCartBinding.inflate(inflater, container, false)
 
         binding.toolbarCart.title = "Shopping Cart"
+
+        val bundle: CartFragmentArgs by navArgs()
+        val user = bundle.user
+
 
         val cartList = ArrayList<CartFood>()
         val cartFood1 = CartFood(1, "Somon", "blabla",10,2,"serap")

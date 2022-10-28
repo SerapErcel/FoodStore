@@ -51,7 +51,8 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             override fun onMenuItemSelected(item: MenuItem): Boolean {
                 return when (item.itemId) {
                     R.id.action_cart -> {
-                        Navigation.findNavController(binding.toolbarHome).navigate(R.id.goToCart)
+                        val transfer = HomeFragmentDirections.goToCart( user = "serap")
+                        Navigation.findNavController(binding.toolbarHome).navigate(transfer)
                         Toast.makeText(requireContext(), "click on cartFragment", Toast.LENGTH_SHORT).show()
                         true
                     }

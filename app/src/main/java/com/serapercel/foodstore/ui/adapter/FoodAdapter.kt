@@ -30,7 +30,7 @@ class FoodAdapter (var mContext: Context, var foodList: List<Food>) : RecyclerVi
         binding.tvCardFoodPrice.text = food.yemek_fiyat
 
         binding.homeFoodCard.setOnClickListener {
-            val transfer = HomeFragmentDirections.goToDetail(food = food)
+            val transfer = HomeFragmentDirections.goToDetail(food = food, user = "serap")
             Navigation.findNavController(it).navigate(transfer)
         }
     }

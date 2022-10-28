@@ -10,6 +10,9 @@
         <variable
             name="homeFragment"
             type="com.serapercel.foodstore.ui.fragment.HomeFragment" />
+        <variable
+            name="foodAdapter"
+            type="com.serapercel.foodstore.ui.adapter.FoodAdapter" />
 
 
     </data>
