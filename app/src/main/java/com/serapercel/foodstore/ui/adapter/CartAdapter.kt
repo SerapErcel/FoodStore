@@ -10,7 +10,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.serapercel.foodstore.data.entity.CartFood
 import com.serapercel.foodstore.databinding.CartCardBinding
 
-class CartAdapter(var mContext: Context, var cartList: List<CartFood>) :
+class CartAdapter(var mContext: Context, var cartList: ArrayList<CartFood>) :
     RecyclerView.Adapter<CartAdapter.CartCardViewHolder>() {
     inner class CartCardViewHolder(binding: CartCardBinding) :
         RecyclerView.ViewHolder(binding.root) {

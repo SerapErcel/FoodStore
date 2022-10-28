@@ -30,7 +30,7 @@
             app:destination="@id/cartFragment" />
         <argument
             android:name="user"
-            app:argType="string" />
+            app:argType="com.serapercel.foodstore.data.entity.User" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
@@ -39,6 +39,6 @@
         tools:layout="@layout/fragment_cart" >
         <argument
             android:name="user"
-            app:argType="string" />
+            app:argType="com.serapercel.foodstore.data.entity.User" />
     </fragment>
 </navigation>

@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
@@ -15,14 +16,17 @@ import com.serapercel.foodstore.R
 import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.databinding.FragmentHomeBinding
 import com.serapercel.foodstore.ui.adapter.FoodAdapter
+import com.serapercel.foodstore.userSerap
 
 class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentHomeBinding.inflate(inflater,container, false)
-        binding.toolbarHome.title = "Foods"
+        binding = DataBindingUtil.inflate(inflater, R.id.homeFragment, container, false)
+
+        binding.homeFragment= this
+        binding.toolbarHomeTitle = "Foods"
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarHome)
 
@@ -36,7 +40,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
         binding.rvHome.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
-        val adapter = FoodAdapter(requireContext(), foodList)
+        val adapter = FoodAdapter(requireContext(), foodList, userSerap)
         binding.rvHome.adapter = adapter
 
         requireActivity().addMenuProvider(object : MenuProvider {
@@ -51,7 +55,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             override fun onMenuItemSelected(item: MenuItem): Boolean {
                 return when (item.itemId) {
                     R.id.action_cart -> {
-                        val transfer = HomeFragmentDirections.goToCart( user = "serap")
+                        val transfer = HomeFragmentDirections.goToCart( user = userSerap)
                         Navigation.findNavController(binding.toolbarHome).navigate(transfer)
                         Toast.makeText(requireContext(), "click on cartFragment", Toast.LENGTH_SHORT).show()
                         true

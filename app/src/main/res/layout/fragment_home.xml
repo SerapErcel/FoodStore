@@ -24,6 +24,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarHome"
+            app:title="@{toolbarHomeTitle}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
@@ -38,6 +39,10 @@
             android:id="@+id/rvHome"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:adapter="@{foodAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            android:orientation="vertical"
+            app:spanCount="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
