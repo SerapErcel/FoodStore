@@ -5,9 +5,8 @@
 
     <data>
         <variable
-            name=""
-            type="" />
-        
+            name="cartFood"
+            type="com.serapercel.foodstore.data.entity.CartFood" />
 
     </data>
 
@@ -33,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/comfortaa"
-                    android:text="Izgara Somon"
+                    android:text="@{cartFood.yemek_adi}"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +47,7 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    tools:srcCompat="@{cartFood.yemek_resim_adi}" />
 
                 <TextView
                     android:id="@+id/tvCartFoodCount"
@@ -57,7 +56,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/comfortaa"
-                    android:text="2 Adet"
+                    android:text="@{cartFood.yemek_siparis_adet}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/comfortaa"
-                    android:text="60 tl"
+                    android:text="@{cartFood.yemek_fiyat}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvCartFoodName" />

@@ -22,7 +22,8 @@ class CartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater,R.id.cartFragment,  container, false)
 
-        binding.toolbarCart.title = "Shopping Cart"
+        binding.toolbarCartTitle = "Shopping Cart"
+        binding.cartFragment = this
 
         val bundle: CartFragmentArgs by navArgs()
         val user = bundle.user

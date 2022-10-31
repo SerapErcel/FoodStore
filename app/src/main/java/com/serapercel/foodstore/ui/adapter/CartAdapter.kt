@@ -29,14 +29,11 @@ class CartAdapter(var mContext: Context, var cartList: ArrayList<CartFood>) :
     override fun onBindViewHolder(holder: CartCardViewHolder, position: Int) {
         val food = cartList[position]
         val binding = holder.binding
-        binding.tvCartFoodName.text = food.yemek_adi
-        binding.tvCartFoodPrice.text = food.yemek_fiyat.toString()
-        binding.tvCartFoodCount.text = food.yemek_siparis_adet.toString()
 
         binding.ivAdd.setOnClickListener {
             food.yemek_siparis_adet += 1
             Toast.makeText(mContext, "click on add", Toast.LENGTH_SHORT).show()
-           // addCount(food.sepet_yemek_id, food.kullanici_adi)
+            addCount(food.sepet_yemek_id, food.kullanici_adi)
 
         }
 
@@ -44,7 +41,7 @@ class CartAdapter(var mContext: Context, var cartList: ArrayList<CartFood>) :
             if (food.yemek_siparis_adet>1){
                 food.yemek_siparis_adet -= 1
                 Toast.makeText(mContext, "click on remove", Toast.LENGTH_SHORT).show()
-               // removeCount(food.sepet_yemek_id, food.kullanici_adi)
+                removeCount(food.sepet_yemek_id, food.kullanici_adi)
             }else{
                 Snackbar.make(it, "Do you want remove ${food.yemek_adi}?", Snackbar.LENGTH_LONG)
                     .setAction("Yes"){
@@ -57,6 +54,13 @@ class CartAdapter(var mContext: Context, var cartList: ArrayList<CartFood>) :
 
     fun removeFood(sepet_yemek_id:Int, kullanici_adi:String){
         Log.e("yemek sil", "$sepet_yemek_id $kullanici_adi")
+    }
+    fun removeCount(sepet_yemek_id: Int, kullanici_adi: String) {
+        Log.e("yemek ekle", "$sepet_yemek_id $kullanici_adi")
+    }
+
+    fun addCount(sepet_yemek_id: Int, kullanici_adi: String) {
+        Log.e("yemek ekle", "$sepet_yemek_id $kullanici_adi")
     }
 
     override fun getItemCount(): Int = cartList.size
