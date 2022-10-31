@@ -19,4 +19,9 @@ class FoodRepository {
 
     suspend fun addCount(sepet_yemek_id: Int, kullanici_adi: String) =
         fds.addCount(sepet_yemek_id, kullanici_adi)
+
+    suspend fun getFoods(): List<Food> = fds.getFoods()
+
+    suspend fun searchFood(searchWord: String): List<Food> = fds.searchFood(searchWord)
+
 }

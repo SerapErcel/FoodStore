@@ -27,7 +27,7 @@ class DetailFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater,R.id.detailFragment, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_detail, container, false)
 
         binding.detailFragment = this
 
@@ -68,8 +68,8 @@ class DetailFragment : Fragment() {
         viewModel = tempViewModel
     }
 
-    fun addCartList(user: User, yemek_siparis_adet: Int, food: Food){
-        viewModel.addCartList(user, yemek_siparis_adet, food)
+    fun addCartList(user: User, yemek_siparis_adet: String, food: Food){
+        viewModel.addCartList(user, yemek_siparis_adet.toInt(), food)
     }
 
 

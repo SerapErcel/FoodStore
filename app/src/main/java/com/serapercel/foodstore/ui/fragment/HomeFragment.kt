@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,27 +17,26 @@ import com.serapercel.foodstore.R
 import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.databinding.FragmentHomeBinding
 import com.serapercel.foodstore.ui.adapter.FoodAdapter
+import com.serapercel.foodstore.ui.viewmodel.HomeViewModel
 import com.serapercel.foodstore.userSerap
 
 class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.id.homeFragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
         binding.homeFragment= this
         binding.toolbarHomeTitle = "Foods"
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarHome)
 
-        val foodList = ArrayList<Food>()
-        val food = Food("1", "Izgara Somon", "blabla", "35tl")
-        val food1 = Food("1", "Izgara Köfte", "blabla", "45tl")
-        val food2 = Food("1", "Ayran", "blabla", "55tl")
-        foodList.add(food)
-        foodList.add(food1)
-        foodList.add(food2)
+        viewModel.foodList.observe(viewLifecycleOwner){
+            val adapter = FoodAdapter(requireContext(), it, userSerap )
+            binding.rvHome.adapter= adapter
+        }
 
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -66,17 +66,20 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         return binding.root
     }
 
-    override fun onQueryTextSubmit(query: String): Boolean {
-        Toast.makeText(requireContext(), "click on onQueryTextSubmit", Toast.LENGTH_SHORT).show()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel : HomeViewModel by viewModels()
+        viewModel = tempViewModel
+    }
 
+    override fun onQueryTextSubmit(query: String): Boolean {
+        viewModel.searchFood(query)
         return true
     }
 
     override fun onQueryTextChange(newText: String): Boolean {
-        Toast.makeText(requireContext(), "click on onQueryTextChange", Toast.LENGTH_SHORT).show()
-
+        viewModel.searchFood(newText)
         return true
     }
-
 
 }
