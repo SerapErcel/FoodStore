@@ -1,7 +1,7 @@
 package com.serapercel.foodstore.data.repo
 
-import android.util.Log
 import com.serapercel.foodstore.data.datasource.FoodDatasource
+import com.serapercel.foodstore.data.entity.CartFood
 import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.entity.User
 
@@ -21,6 +21,9 @@ class FoodRepository {
         fds.addCount(sepet_yemek_id, kullanici_adi)
 
     suspend fun getFoods(): List<Food> = fds.getFoods()
+
+    suspend fun getCartFoods(): List<CartFood> = fds.getCartFoods()
+
 
     suspend fun searchFood(searchWord: String): List<Food> = fds.searchFood(searchWord)
 

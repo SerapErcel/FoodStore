@@ -9,14 +9,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.serapercel.foodstore.R
-import com.serapercel.foodstore.cartList
-import com.serapercel.foodstore.data.entity.CartFood
 import com.serapercel.foodstore.databinding.FragmentCartBinding
 import com.serapercel.foodstore.ui.adapter.CartAdapter
 import com.serapercel.foodstore.ui.viewmodel.CartViewModel
-import com.serapercel.foodstore.ui.viewmodel.DetailViewModel
 
 class CartFragment : Fragment() {
     private lateinit var binding: FragmentCartBinding
@@ -32,6 +28,10 @@ class CartFragment : Fragment() {
         val bundle: CartFragmentArgs by navArgs()
         val user = bundle.user
 
+        viewModel.cartList.observe(viewLifecycleOwner){
+            val adapter = CartAdapter(requireContext(), it , viewModel, user)
+            binding.rvCart.adapter= adapter
+        }
 /*
         val cartList = ArrayList<CartFood>()
         val cartFood1 = CartFood(1, "Somon", "blabla",10,2,"serap")
@@ -40,7 +40,6 @@ class CartFragment : Fragment() {
         cartList.add(cartFood1)
         cartList.add(cartFood2)
         cartList.add(cartFood3)*/
-
 
         return binding.root
     }

@@ -56,7 +56,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/comfortaa"
-                    android:text="@{cartFood.yemek_siparis_adet}"
+                    android:text="@{cartFood.yemek_siparis_adet.toString()}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/comfortaa"
-                    android:text="@{cartFood.yemek_fiyat}"
+                    android:text="@{cartFood.yemek_fiyat.toString()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvCartFoodName" />

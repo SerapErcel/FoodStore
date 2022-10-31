@@ -11,10 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.serapercel.foodstore.R
-import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.databinding.FragmentHomeBinding
 import com.serapercel.foodstore.ui.adapter.FoodAdapter
 import com.serapercel.foodstore.ui.viewmodel.HomeViewModel
