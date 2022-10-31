@@ -4,6 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="cartAdapter"
+            type="com.serapercel.foodstore.ui.adapter.CartAdapter" />
+        <variable
+            name="toolbarCartTitle"
+            type="String" />
+        <variable
+            name="cartFragment"
+            type="com.serapercel.foodstore.ui.fragment.CartFragment" />
 
     </data>
 
@@ -14,6 +23,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarCart"
+            app:title="@{toolbarCartTitle}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
@@ -40,6 +50,8 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvCart"
+                    android:adapter="@{cartAdapter}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingBottom="100dp" />
@@ -52,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/confirm_cart"
+            android:onClick="@{() -> cartFragment.confirmCartButton()}"
             android:textStyle="bold"
             android:fontFamily="@font/comfortaa"
             app:layout_constraintBottom_toBottomOf="parent"

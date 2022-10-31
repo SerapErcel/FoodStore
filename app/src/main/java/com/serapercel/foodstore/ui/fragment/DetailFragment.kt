@@ -8,42 +8,32 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.serapercel.foodstore.R
 import com.serapercel.foodstore.data.entity.Food
+import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.FragmentDetailBinding
+import com.serapercel.foodstore.userSerap
 
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.id.detailFragment, container, false)
+
+        binding.detailFragment = this
 
         val bundle:DetailFragmentArgs by navArgs()
         val tFood = bundle.food
         val user = bundle.user
-        var count = 1
 
-        binding.tvFoodName.text = tFood.yemek_adi
-        binding.tvFoodPrice.text = tFood.yemek_fiyat
-        binding.tvFoodCount.text = count.toString()
-
-        binding.toolbarDetail.title = tFood.yemek_adi
-
-        binding.buttonAdd.setOnClickListener {
-            addCartList(user, binding.tvFoodCount.text.toString().toInt(), tFood)
-
-        }
-        binding.ivAdd.setOnClickListener {
-            updateCount(binding.tvFoodCount, count, '+' )
-
-        }
-        binding.ivRemove.setOnClickListener {
-            updateCount(binding.tvFoodCount, count, '-' )
-        }
+        binding.detailFood = tFood
+        binding.user = user
+        binding.count = "1"
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarDetail)
 
@@ -68,12 +58,13 @@ class DetailFragment : Fragment() {
         return binding.root
     }
 
-    fun addCartList(kullanici_ad:String, yemek_siparis_adet: Int, food: Food){
-        Log.e("yemek", " sepete yemek ekle $yemek_siparis_adet ${food.yemek_adi} $kullanici_ad")
+    fun addCartList(user: User, yemek_siparis_adet: Int, food: Food){
+        Log.e("yemek", " sepete yemek ekle $yemek_siparis_adet ${food.yemek_adi} ${user.user_name}")
     }
 
-    fun updateCount(view: TextView, number: Int, char:Char){
-        var count = number
+
+    fun updateCount(view: TextView, number: String, char:Char){
+        var count = number.toInt()
         when(char){
             '-' -> count -= 1
             '+' -> count += 1

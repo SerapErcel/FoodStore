@@ -5,15 +5,19 @@
 
     <data>
         <variable
-            name="toolbarDetailTitle"
+            name="count"
             type="String" />
         <variable
             name="detailFragment"
             type="com.serapercel.foodstore.ui.fragment.DetailFragment" />
 
         <variable
-            name="food"
+            name="detailFood"
             type="com.serapercel.foodstore.data.entity.Food" />
+
+        <variable
+            name="user"
+            type="com.serapercel.foodstore.data.entity.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,6 +27,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarDetail"
+            app:title="@{detailFood.yemek_adi}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
@@ -38,12 +43,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="128dp"
-            android:contentDescription="TODO"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarDetail"
-            tools:src="@{food.setYemek_resim_adi}" />
+            tools:src="@{detailFood.setYemek_resim_adi}" />
 
         <TextView
             android:id="@+id/tvFoodName"
@@ -51,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/comfortaa"
-            android:text="@{food.yemek_adi}"
+            android:text="@{detailFood.yemek_adi}"
             android:textColor="@color/secondaryDarkColor"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -65,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/comfortaa"
-            android:text="@{food.yemek_fiyat}"
+            android:text="@{detailFood.yemek_fiyat}"
             android:textColor="@color/secondaryColor"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/comfortaa"
-            android:text="2 Adet"
+            android:text="@{count}"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,6 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:onClick="@{() -> detailFragment.updateCount(tvFoodCount, tvFoodCount.text.toString(), '+' )}"
             app:layout_constraintBottom_toBottomOf="@+id/tvFoodCount"
             app:layout_constraintStart_toEndOf="@+id/tvFoodCount"
             app:layout_constraintTop_toTopOf="@+id/tvFoodCount"
@@ -99,6 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
+            android:onClick="@{() -> detailFragment.updateCount(tvFoodCount,  tvFoodCount.text.toString(), '-' )}"
             app:layout_constraintBottom_toBottomOf="@+id/tvFoodCount"
             app:layout_constraintEnd_toStartOf="@+id/tvFoodCount"
             app:layout_constraintTop_toTopOf="@+id/tvFoodCount"
@@ -112,7 +118,7 @@
             android:fontFamily="@font/comfortaa"
             android:text="Add Cart"
             android:textStyle="bold"
-            android:onClick="@{() -> detailFragment.addCartList()"
+            android:onClick="@{() -> detailFragment.addCartList(user, tvFoodCount.text.toString(), detailFood)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvFoodCount" />

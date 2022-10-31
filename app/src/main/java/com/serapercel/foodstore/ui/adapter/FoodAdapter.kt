@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.serapercel.foodstore.data.entity.Food
+import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.HomeCardBinding
 import com.serapercel.foodstore.ui.fragment.HomeFragmentDirections
+import com.serapercel.foodstore.userSerap
 
-class FoodAdapter (var mContext: Context, var foodList: List<Food>) : RecyclerView.Adapter<FoodAdapter.HomeCardViewHolder>(){
+class FoodAdapter (var mContext: Context, var foodList: List<Food>, var user: User) : RecyclerView.Adapter<FoodAdapter.HomeCardViewHolder>(){
     inner class HomeCardViewHolder(binding: HomeCardBinding) : RecyclerView.ViewHolder(binding.root){
         var binding:HomeCardBinding
         init {
@@ -25,12 +27,10 @@ class FoodAdapter (var mContext: Context, var foodList: List<Food>) : RecyclerVi
     override fun onBindViewHolder(holder: HomeCardViewHolder, position: Int) {
         val food = foodList[position]
         val binding = holder.binding
-
-        binding.tvCardFoodName.text = food.yemek_adi
-        binding.tvCardFoodPrice.text = food.yemek_fiyat
+        binding.homeFood = food
 
         binding.homeFoodCard.setOnClickListener {
-            val transfer = HomeFragmentDirections.goToDetail(food = food, user = "serap")
+            val transfer = HomeFragmentDirections.goToDetail(food = food, user = user)
             Navigation.findNavController(it).navigate(transfer)
         }
     }

@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="homeFood"
+            type="com.serapercel.foodstore.data.entity.Food" />
+
     </data>
 
     <LinearLayout
@@ -32,7 +36,7 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    tools:srcCompat="@{homeFood.yemek_resim_adi}" />
 
                 <TextView
                     android:id="@+id/tvCardFoodName"
@@ -40,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/comfortaa"
-                    android:text="Izgara Somon"
+                    android:text="@{homeFood.yemek_adi}"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +57,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/comfortaa"
-                    android:text="60 tl"
+                    android:text="@{homeFood.yemek_fiyat}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

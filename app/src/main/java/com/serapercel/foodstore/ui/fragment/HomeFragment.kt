@@ -38,11 +38,6 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         foodList.add(food1)
         foodList.add(food2)
 
-        binding.rvHome.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-
-        val adapter = FoodAdapter(requireContext(), foodList, userSerap)
-        binding.rvHome.adapter = adapter
-
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.toolbar_search_menu, menu)
