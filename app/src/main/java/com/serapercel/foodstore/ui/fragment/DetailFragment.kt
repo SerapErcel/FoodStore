@@ -9,17 +9,21 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.serapercel.foodstore.R
 import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.FragmentDetailBinding
+import com.serapercel.foodstore.ui.viewmodel.DetailViewModel
 import com.serapercel.foodstore.userSerap
 
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
+    private lateinit var viewModel: DetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -58,8 +62,14 @@ class DetailFragment : Fragment() {
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: DetailViewModel by viewModels()
+        viewModel = tempViewModel
+    }
+
     fun addCartList(user: User, yemek_siparis_adet: Int, food: Food){
-        Log.e("yemek", " sepete yemek ekle $yemek_siparis_adet ${food.yemek_adi} ${user.user_name}")
+        viewModel.addCartList(user, yemek_siparis_adet, food)
     }
 
 
