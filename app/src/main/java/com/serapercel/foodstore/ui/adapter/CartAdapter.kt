@@ -11,8 +11,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.serapercel.foodstore.R
 import com.serapercel.foodstore.data.entity.CartFood
 import com.serapercel.foodstore.databinding.CartCardBinding
+import com.serapercel.foodstore.ui.viewmodel.CartViewModel
 
-class CartAdapter(var mContext: Context, var cartList: ArrayList<CartFood>) :
+class CartAdapter(var mContext: Context, var cartList: ArrayList<CartFood>, var viewModel: CartViewModel) :
     RecyclerView.Adapter<CartAdapter.CartCardViewHolder>() {
     inner class CartCardViewHolder(binding: CartCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -56,14 +57,14 @@ class CartAdapter(var mContext: Context, var cartList: ArrayList<CartFood>) :
     }
 
     fun removeFood(sepet_yemek_id:Int, kullanici_adi:String){
-        Log.e("yemek sil", "$sepet_yemek_id $kullanici_adi")
+        viewModel.removeFood(sepet_yemek_id, kullanici_adi)
     }
     fun removeCount(sepet_yemek_id: Int, kullanici_adi: String) {
-        Log.e("yemek ekle", "$sepet_yemek_id $kullanici_adi")
+        viewModel.removeCount(sepet_yemek_id, kullanici_adi)
     }
 
     fun addCount(sepet_yemek_id: Int, kullanici_adi: String) {
-        Log.e("yemek ekle", "$sepet_yemek_id $kullanici_adi")
+        viewModel.addCount(sepet_yemek_id, kullanici_adi)
     }
 
     override fun getItemCount(): Int = cartList.size

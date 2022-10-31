@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.serapercel.foodstore.R
@@ -14,9 +15,12 @@ import com.serapercel.foodstore.cartList
 import com.serapercel.foodstore.data.entity.CartFood
 import com.serapercel.foodstore.databinding.FragmentCartBinding
 import com.serapercel.foodstore.ui.adapter.CartAdapter
+import com.serapercel.foodstore.ui.viewmodel.CartViewModel
+import com.serapercel.foodstore.ui.viewmodel.DetailViewModel
 
 class CartFragment : Fragment() {
     private lateinit var binding: FragmentCartBinding
+    private lateinit var viewModel: CartViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,6 +43,12 @@ class CartFragment : Fragment() {
 
 
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: CartViewModel by viewModels()
+        viewModel = tempViewModel
     }
     fun confirmCartButton(){
         Log.e("Cart", "confirm")
