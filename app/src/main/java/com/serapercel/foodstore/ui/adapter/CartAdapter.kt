@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.serapercel.foodstore.R
 import com.serapercel.foodstore.data.entity.CartFood
 import com.serapercel.foodstore.databinding.CartCardBinding
 
@@ -22,7 +24,8 @@ class CartAdapter(var mContext: Context, var cartList: ArrayList<CartFood>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartCardViewHolder {
-        val binding = CartCardBinding.inflate(LayoutInflater.from(mContext), parent, false)
+        val binding:CartCardBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext),
+            R.layout.cart_card, parent, false)
         return CartCardViewHolder(binding)
     }
 
