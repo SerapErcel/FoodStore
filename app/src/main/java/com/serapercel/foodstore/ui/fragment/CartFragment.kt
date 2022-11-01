@@ -51,6 +51,11 @@ class CartFragment : Fragment() {
         val tempViewModel: CartViewModel by viewModels()
         viewModel = tempViewModel
     }
+    override fun onResume() {
+        super.onResume()
+        viewModel.getCartFoods()
+    }
+
     fun confirmCartButton(){
         Log.e("Cart", "confirm")
     }

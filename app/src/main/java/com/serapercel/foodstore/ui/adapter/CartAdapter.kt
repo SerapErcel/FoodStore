@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.serapercel.foodstore.R
 import com.serapercel.foodstore.data.entity.CartFood
+import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.CartCardBinding
 import com.serapercel.foodstore.ui.viewmodel.CartViewModel
@@ -42,38 +43,17 @@ class CartAdapter(
         val binding = holder.binding
         binding.cartFood = food
 
-        binding.ivAdd.setOnClickListener {
-            food.yemek_siparis_adet = food.yemek_siparis_adet?.plus(1)
-            Toast.makeText(mContext, "click on add", Toast.LENGTH_SHORT).show()
-            addCount(food.sepet_yemek_id, user.user_name)
-
-        }
-
-        binding.ivRemove.setOnClickListener {
-            if (food.yemek_siparis_adet!! > 1) {
-                food.yemek_siparis_adet = food.yemek_siparis_adet?.minus(1)
-                Toast.makeText(mContext, "click on remove", Toast.LENGTH_SHORT).show()
-                removeCount(food.sepet_yemek_id, user.user_name)
-            } else {
-                Snackbar.make(it, "Do you want remove ${food.yemek_adi}?", Snackbar.LENGTH_LONG)
-                    .setAction("Yes") {
-                        removeFood(food.sepet_yemek_id, user.user_name)
-                    }.show()
-            }
+        binding.deleteCartFood.setOnClickListener {
+            Snackbar.make(it, "Do you want remove ${food.yemek_adi}?", Snackbar.LENGTH_LONG)
+                .setAction("Yes") {
+                    removeFood(food.sepet_yemek_id, user.user_name)
+                }.show()
         }
 
     }
 
     fun removeFood(sepet_yemek_id: Int, kullanici_adi: String) {
         viewModel.removeFood(sepet_yemek_id, kullanici_adi)
-    }
-
-    fun removeCount(sepet_yemek_id: Int, kullanici_adi: String) {
-        viewModel.removeCount(sepet_yemek_id, kullanici_adi)
-    }
-
-    fun addCount(sepet_yemek_id: Int, kullanici_adi: String) {
-        viewModel.addCount(sepet_yemek_id, kullanici_adi)
     }
 
     override fun getItemCount(): Int = cartList.size

@@ -71,6 +71,11 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         viewModel = tempViewModel
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getFoods()
+    }
+
     override fun onQueryTextSubmit(query: String): Boolean {
         viewModel.searchFood(query)
         return true

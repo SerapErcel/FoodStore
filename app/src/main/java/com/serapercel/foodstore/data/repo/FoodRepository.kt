@@ -13,16 +13,9 @@ class FoodRepository(var fds: FoodDatasource) {
     suspend fun removeFood(sepet_yemek_id: Int, kullanici_adi: String) =
         fds.removeFood(sepet_yemek_id, kullanici_adi)
 
-    suspend fun removeCount(sepet_yemek_id: Int, kullanici_adi: String) =
-        fds.removeCount(sepet_yemek_id, kullanici_adi)
-
-    suspend fun addCount(sepet_yemek_id: Int, kullanici_adi: String) =
-        fds.addCount(sepet_yemek_id, kullanici_adi)
-
     suspend fun getFoods(): List<Food> = fds.getFoods()
 
     suspend fun getCartFoods(): List<CartFood> = fds.getCartFoods()
-
 
     suspend fun searchFood(searchWord: String): List<Food> = fds.searchFood(searchWord)
 
