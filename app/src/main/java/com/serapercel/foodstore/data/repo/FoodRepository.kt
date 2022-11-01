@@ -5,8 +5,7 @@ import com.serapercel.foodstore.data.entity.CartFood
 import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.entity.User
 
-class FoodRepository {
-    var fds = FoodDatasource()
+class FoodRepository(var fds: FoodDatasource) {
 
     suspend fun addCartList(user: User, yemek_siparis_adet: Int, food: Food) =
         fds.addCartList(user, yemek_siparis_adet, food)

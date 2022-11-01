@@ -16,7 +16,9 @@ import com.serapercel.foodstore.databinding.FragmentHomeBinding
 import com.serapercel.foodstore.ui.adapter.FoodAdapter
 import com.serapercel.foodstore.ui.viewmodel.HomeViewModel
 import com.serapercel.foodstore.userSerap
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel

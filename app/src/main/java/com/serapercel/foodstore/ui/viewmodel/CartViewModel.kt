@@ -3,13 +3,16 @@ package com.serapercel.foodstore.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.serapercel.foodstore.data.entity.CartFood
+import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.repo.FoodRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CartViewModel : ViewModel() {
-    var frepo = FoodRepository()
+@HiltViewModel
+class CartViewModel @Inject constructor(var frepo: FoodRepository) : ViewModel() {
     var cartList = MutableLiveData<List<CartFood>>()
 
     init {
