@@ -17,6 +17,7 @@ import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.FragmentDetailBinding
 import com.serapercel.foodstore.ui.viewmodel.DetailViewModel
+import com.serapercel.foodstore.userSerap
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,7 +49,8 @@ class DetailFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when(menuItem.itemId){
                     R.id.action_detail_cart -> {
-                        Navigation.findNavController(binding.toolbarDetail).navigate(R.id.goToCartFromDetail)
+                        val transfer = DetailFragmentDirections.goToCartFromDetail( user = userSerap)
+                        Navigation.findNavController(binding.toolbarDetail).navigate(transfer)
                         Toast.makeText(requireContext(), "click on cartFragment", Toast.LENGTH_SHORT).show()
                         true
                     }
