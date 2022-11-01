@@ -2,6 +2,8 @@ package com.serapercel.foodstore.di
 
 import com.serapercel.foodstore.data.datasource.FoodDatasource
 import com.serapercel.foodstore.data.repo.FoodRepository
+import com.serapercel.foodstore.retrofit.ApiUtils
+import com.serapercel.foodstore.retrofit.FoodDAO
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +21,13 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideFoodDataSource(): FoodDatasource {
-        return FoodDatasource()
+    fun provideFoodDataSource(fdao: FoodDAO): FoodDatasource {
+        return FoodDatasource(fdao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFoodDAO(): FoodDAO {
+        return ApiUtils.getFoodDao()
     }
 }

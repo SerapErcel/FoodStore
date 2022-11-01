@@ -4,11 +4,12 @@ import android.util.Log
 import com.serapercel.foodstore.data.entity.CartFood
 import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.entity.User
+import com.serapercel.foodstore.retrofit.FoodDAO
 import com.serapercel.foodstore.userSerap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class FoodDatasource {
+class FoodDatasource ( var fdao: FoodDAO) {
 
     suspend fun addCartList(user: User, yemek_siparis_adet: Int, food: Food) {
         Log.e("yemek", " sepete yemek ekle $yemek_siparis_adet ${food.yemek_adi} ${user.user_name}")
@@ -27,14 +28,7 @@ class FoodDatasource {
     }
 
     suspend fun getFoods(): List<Food> = withContext(Dispatchers.IO) {
-        val foodList = ArrayList<Food>()
-        val food = Food("1", "Izgara Somon", "blabla", "35tl")
-        val food1 = Food("1", "Izgara Köfte", "blabla", "45tl")
-        val food2 = Food("1", "Ayran", "blabla", "55tl")
-        foodList.add(food)
-        foodList.add(food1)
-        foodList.add(food2)
-        return@withContext foodList
+        fdao.getFoods().yemekler
     }
 
     suspend fun getCartFoods(): List<CartFood> = withContext(Dispatchers.IO) {
