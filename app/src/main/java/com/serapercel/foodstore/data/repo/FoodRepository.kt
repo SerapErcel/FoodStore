@@ -15,8 +15,8 @@ class FoodRepository(var fds: FoodDatasource) {
 
     suspend fun getFoods(): List<Food> = fds.getFoods()
 
-    suspend fun getCartFoods(kullanici_adi: String): List<CartFood> = fds.getCartFoods(kullanici_adi)
+    suspend fun getCartFoods(kullanici_adi: String): List<CartFood> =
+        fds.getCartFoods(kullanici_adi)
 
     suspend fun searchFood(searchWord: String): List<Food> = fds.searchFood(searchWord)
-
 }
