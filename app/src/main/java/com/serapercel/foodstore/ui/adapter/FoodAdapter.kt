@@ -12,7 +12,9 @@ import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.HomeCardBinding
 import com.serapercel.foodstore.ui.fragment.HomeFragmentDirections
 
-class FoodAdapter(var mContext: Context, var foodList: List<Food>, var user: User) :
+class FoodAdapter(var mContext: Context,
+                  var foodList: List<Food>,
+                  var user: User) :
     RecyclerView.Adapter<FoodAdapter.HomeCardViewHolder>() {
     inner class HomeCardViewHolder(binding: HomeCardBinding) :
         RecyclerView.ViewHolder(binding.root) {

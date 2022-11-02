@@ -17,8 +17,7 @@ import com.serapercel.foodstore.ui.viewmodel.CartViewModel
 class CartAdapter(
     var mContext: Context,
     var cartList: List<CartFood>,
-    var viewModel: CartViewModel,
-    var user: User
+    var viewModel: CartViewModel
 ) :
     RecyclerView.Adapter<CartAdapter.CartCardViewHolder>() {
     inner class CartCardViewHolder(binding: CartCardBinding) :
@@ -46,7 +45,7 @@ class CartAdapter(
         binding.deleteCartFood.setOnClickListener {
             Snackbar.make(it, "Do you want remove ${food.yemek_adi}?", Snackbar.LENGTH_LONG)
                 .setAction("Yes") {
-                    removeFood(food.sepet_yemek_id, user.user_name)
+                    removeFood(food.sepet_yemek_id, food.kullanici_adi)
                 }.show()
         }
 

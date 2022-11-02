@@ -5,7 +5,6 @@ import com.serapercel.foodstore.data.entity.CartFood
 import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.retrofit.FoodDAO
-import com.serapercel.foodstore.userSerap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -39,15 +38,8 @@ class FoodDatasource(var fdao: FoodDAO) {
         fdao.getFoods().yemekler
     }
 
-    suspend fun getCartFoods(): List<CartFood> = withContext(Dispatchers.IO) {
-        val foodList = ArrayList<CartFood>()
-        val food = CartFood(1, "Cart Izgara Somon", "blabla", 35, 3, userSerap.user_name)
-        val food1 = CartFood(1, "Cart Izgara Köfte", "blabla", 35, 3, userSerap.user_name)
-        val food2 = CartFood(1, "Cart Ayran", "blabla", 35, 3, userSerap.user_name)
-        foodList.add(food)
-        foodList.add(food1)
-        foodList.add(food2)
-        return@withContext foodList
+    suspend fun getCartFoods(kullanici_adi: String): List<CartFood> = withContext(Dispatchers.IO) {
+        fdao.getCartFoods(kullanici_adi).yemekler
     }
 
     suspend fun searchFood(searchWord: String): List<Food> = withContext(Dispatchers.IO) {

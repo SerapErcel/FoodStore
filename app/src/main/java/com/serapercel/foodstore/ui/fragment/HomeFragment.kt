@@ -15,7 +15,7 @@ import com.serapercel.foodstore.R
 import com.serapercel.foodstore.databinding.FragmentHomeBinding
 import com.serapercel.foodstore.ui.adapter.FoodAdapter
 import com.serapercel.foodstore.ui.viewmodel.HomeViewModel
-import com.serapercel.foodstore.userSerap
+import com.serapercel.foodstore.user
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,7 +33,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarHome)
 
         viewModel.foodList.observe(viewLifecycleOwner){
-            val adapter = FoodAdapter(requireContext(), it, userSerap )
+            val adapter = FoodAdapter(requireContext(), it, user )
             binding.rvHome.adapter= adapter
         }
 
@@ -49,7 +49,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             override fun onMenuItemSelected(item: MenuItem): Boolean {
                 return when (item.itemId) {
                     R.id.action_cart -> {
-                        val transfer = HomeFragmentDirections.goToCart( user = userSerap)
+                        val transfer = HomeFragmentDirections.goToCart( user = user)
                         Navigation.findNavController(binding.toolbarHome).navigate(transfer)
                         Toast.makeText(requireContext(), "click on cartFragment", Toast.LENGTH_SHORT).show()
                         true

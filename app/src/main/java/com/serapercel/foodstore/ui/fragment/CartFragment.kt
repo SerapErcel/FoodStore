@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.serapercel.foodstore.R
+import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.FragmentCartBinding
 import com.serapercel.foodstore.ui.adapter.CartAdapter
 import com.serapercel.foodstore.ui.viewmodel.CartViewModel
@@ -31,17 +32,9 @@ class CartFragment : Fragment() {
         val user = bundle.user
 
         viewModel.cartList.observe(viewLifecycleOwner){
-            val adapter = CartAdapter(requireContext(), it , viewModel, user)
+            val adapter = CartAdapter(requireContext(), it , viewModel)
             binding.rvCart.adapter= adapter
         }
-/*
-        val cartList = ArrayList<CartFood>()
-        val cartFood1 = CartFood(1, "Somon", "blabla",10,2,"serap")
-        val cartFood2 = CartFood(2, "Köfte", "blabla",20,2,"serap")
-        val cartFood3 = CartFood(3, "Balık", "blabla",30,2,"serap")
-        cartList.add(cartFood1)
-        cartList.add(cartFood2)
-        cartList.add(cartFood3)*/
 
         return binding.root
     }
