@@ -7,7 +7,7 @@
 
         <variable
             name="count"
-            type="String" />
+            type="Integer" />
 
         <variable
             name="detailFragment"
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/comfortaa"
-            android:text="@{count}"
+            android:text="@{count.toString()}"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:contentDescription="@string/design"
-            android:onClick="@{() -> detailFragment.updateCount(tvFoodCount, tvFoodCount.text.toString(), '+' )}"
+            android:onClick="@{() -> detailFragment.updateCount(tvFoodCount.text.toString(), '+' )}"
             app:layout_constraintBottom_toBottomOf="@+id/tvFoodCount"
             app:layout_constraintStart_toEndOf="@+id/tvFoodCount"
             app:layout_constraintTop_toTopOf="@+id/tvFoodCount"
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:contentDescription="@string/design"
-            android:onClick="@{() -> detailFragment.updateCount(tvFoodCount,  tvFoodCount.text.toString(), '-' )}"
+            android:onClick="@{() -> detailFragment.updateCount( tvFoodCount.text.toString(), '-' )}"
             app:layout_constraintBottom_toBottomOf="@+id/tvFoodCount"
             app:layout_constraintEnd_toStartOf="@+id/tvFoodCount"
             app:layout_constraintTop_toTopOf="@+id/tvFoodCount"

@@ -2,7 +2,6 @@ package com.serapercel.foodstore.ui.fragment
 
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
@@ -38,7 +37,7 @@ class DetailFragment : Fragment() {
 
         binding.detailFood = tFood
         binding.user = user
-        binding.count = "1"
+        binding.count = 1
         showImage(tFood.yemek_resim_adi, requireContext(), binding.imageViewFood)
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarDetail)
@@ -80,13 +79,13 @@ class DetailFragment : Fragment() {
     }
 
 
-    fun updateCount(view: TextView, number: String, char: Char) {
+    fun updateCount( number: String, char: Char) {
         var count = number.toInt()
         when (char) {
-            '-' -> count -= 1
+            '-' -> count = count- 1
             '+' -> count += 1
             else -> count = 1
         }
-        view.text = count.toString()
+        binding.count = count
     }
 }
