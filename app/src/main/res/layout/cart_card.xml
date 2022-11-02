@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="cartFood"
             type="com.serapercel.foodstore.data.entity.CartFood" />
@@ -26,52 +27,56 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tvCartFoodName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/comfortaa"
-                    android:text="@{cartFood.yemek_adi}"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ivCartFood" />
-
                 <ImageView
                     android:id="@+id/ivCartFood"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/avatars" />
 
-                <TextView
-                    android:id="@+id/tvCartFoodPrice"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/comfortaa"
-                    android:text="@{cartFood.yemek_fiyat.toString()}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvCartFoodName" />
-
-                <TextView
-                    android:id="@+id/tvCartFoodCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/comfortaa"
-                    android:text="@{cartFood.yemek_siparis_adet.toString()}"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="201dp"
+                    android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvCartFoodPrice" />
+                    app:layout_constraintEnd_toStartOf="@+id/deleteCartFood"
+                    app:layout_constraintStart_toEndOf="@id/ivCartFood"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5">
+
+                    <TextView
+                        android:id="@+id/tvCartFoodName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/comfortaa"
+                        android:text="@{cartFood.yemek_adi}"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tvCartFoodPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/comfortaa"
+                        android:text="@{cartFood.yemek_fiyat.toString()}" />
+
+                    <TextView
+                        android:id="@+id/tvCartFoodCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/comfortaa"
+                        android:text="@{cartFood.yemek_siparis_adet.toString()}" />
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/deleteCartFood"
