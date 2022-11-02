@@ -3,15 +3,13 @@ package com.serapercel.foodstore.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.serapercel.foodstore.R
 import com.serapercel.foodstore.data.entity.CartFood
-import com.serapercel.foodstore.data.entity.Food
-import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.CartCardBinding
+import com.serapercel.foodstore.showImage
 import com.serapercel.foodstore.ui.viewmodel.CartViewModel
 
 class CartAdapter(
@@ -41,6 +39,7 @@ class CartAdapter(
         val food = cartList[position]
         val binding = holder.binding
         binding.cartFood = food
+        showImage(food.yemek_resim_adi, mContext, binding.ivCartFood)
 
         binding.deleteCartFood.setOnClickListener {
             Snackbar.make(it, "Do you want remove ${food.yemek_adi}?", Snackbar.LENGTH_LONG)
