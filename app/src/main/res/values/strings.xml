@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">FoodStore</string>
     <string name="confirm_cart">Confirm Cart</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="first_onboarding_description">First Onboarding Description</string>
+    <string name="onboarding_description_2">Onboarding Description 2</string>
+    <string name="onboarding_description_3">Onboarding Description 3</string>
+    <string name="finish">Finish</string>
+    <string name="next">Next</string>
+    <string name="design">design</string>
+    <string name="food_store">Food Store</string>
 </resources>
