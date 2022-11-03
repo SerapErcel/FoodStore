@@ -12,18 +12,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <androidx.cardview.widget.CardView
             android:id="@+id/homeFoodCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="8dp"
+            app:cardElevation="5dp"
             app:cardCornerRadius="8dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/background"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="fitXY"
+                    android:alpha="0.1"
+                    android:contentDescription="@string/design"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/card_background"/>
 
                 <ImageView
                     android:id="@+id/ivCardFood"
@@ -40,10 +55,9 @@
                     android:id="@+id/tvCardFoodName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/comfortaa"
                     android:text="@{homeFood.yemek_adi}"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/ivCardFood" />
@@ -53,9 +67,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="12dp"
                     android:fontFamily="@font/comfortaa"
-                    android:text="@{homeFood.yemek_fiyat}"
+                    android:text='@{homeFood.yemek_fiyat + " ₺"}'
+                    android:textColor="@color/secondaryDarkColor"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
