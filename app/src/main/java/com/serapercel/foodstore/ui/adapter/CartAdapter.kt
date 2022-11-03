@@ -39,6 +39,7 @@ class CartAdapter(
         val food = cartList[position]
         val binding = holder.binding
         binding.cartFood = food
+        binding.tvCartFoodPrice.text = (food.yemek_fiyat!!.times(food.yemek_siparis_adet!!)).toString()
         showImage(food.yemek_resim_adi, mContext, binding.ivCartFood)
 
         binding.deleteCartFood.setOnClickListener {
