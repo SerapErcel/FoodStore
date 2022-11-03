@@ -15,7 +15,6 @@ import com.serapercel.foodstore.R
 import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.FragmentDetailBinding
-import com.serapercel.foodstore.showImage
 import com.serapercel.foodstore.ui.viewmodel.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,7 +37,7 @@ class DetailFragment : Fragment() {
         binding.detailFood = tFood
         binding.user = user
         binding.count = 1
-        showImage(tFood.yemek_resim_adi, requireContext(), binding.imageViewFood)
+        //showImage(tFood.yemek_resim_adi, requireContext(), binding.imageViewFood)
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarDetail)
 

@@ -1,7 +1,9 @@
 package com.serapercel.foodstore.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
@@ -24,18 +26,14 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
-        binding.homeFragment= this
+        binding.homeFragment = this
         binding.toolbarHomeTitle = "Foods"
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarHome)
-
-        viewModel.foodList.observe(viewLifecycleOwner){
-            val adapter = FoodAdapter(requireContext(), it, user )
-            binding.rvHome.adapter= adapter
-        }
 
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -49,25 +47,57 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             override fun onMenuItemSelected(item: MenuItem): Boolean {
                 return when (item.itemId) {
                     R.id.action_cart -> {
-                        val transfer = HomeFragmentDirections.goToCart( user = user)
+                        val transfer = HomeFragmentDirections.goToCart(user = user)
                         Navigation.findNavController(binding.toolbarHome).navigate(transfer)
-                        Toast.makeText(requireContext(), "click on cartFragment", Toast.LENGTH_SHORT).show()
-                        true
-                    }
-                    R.id.action_search -> {
-                        Toast.makeText(requireContext(), "click on search", Toast.LENGTH_SHORT).show()
                         true
                     }
                     else -> false
                 }
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        val popupMenu = PopupMenu(requireContext(), binding.filter)
+
+        popupMenu.menuInflater.inflate(R.menu.filter_menu, popupMenu.menu)
+
+        popupMenu.setOnMenuItemClickListener() { menuItem ->
+            Log.e("yemek", " on menu item selected")
+            return@setOnMenuItemClickListener when (menuItem.itemId) {
+                R.id.rising -> {
+                    viewModel.sortedFoods()
+                    Toast.makeText(requireContext(), "click on Rising", Toast.LENGTH_SHORT)
+                        .show()
+                    true
+                }
+                R.id.decreasing -> {
+                    viewModel.sortedFoods()
+                    Toast.makeText(requireContext(), "click on Decrasing", Toast.LENGTH_SHORT)
+                        .show()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        binding.filter.setOnClickListener {
+            Log.e("yemek", "filter click listener")
+            popupMenu.show()
+        }
+
+        viewModel.foodList.observe(viewLifecycleOwner) {
+            if (it != null) {
+                val adapter = FoodAdapter(requireContext(), it, user, viewModel)
+                binding.rvHome.adapter = adapter
+            } else {
+                Toast.makeText(requireContext(), "List not found!", Toast.LENGTH_SHORT).show()
+            }
+        }
         return binding.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tempViewModel : HomeViewModel by viewModels()
+        val tempViewModel: HomeViewModel by viewModels()
         viewModel = tempViewModel
     }
 

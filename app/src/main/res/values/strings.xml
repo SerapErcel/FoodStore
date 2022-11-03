@@ -9,4 +9,7 @@
     <string name="design">design</string>
     <string name="food_store">Food Store</string>
     <string name="add_cart">Add Cart</string>
+    <string name="rising">Rising</string>
+    <string name="decreasing">Decreasing</string>
+    <string name="filter">Filter</string>
 </resources>

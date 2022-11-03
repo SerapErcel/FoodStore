@@ -1,6 +1,7 @@
 package com.serapercel.foodstore.ui.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -38,7 +39,6 @@ class CartAdapter(
     override fun onBindViewHolder(holder: CartCardViewHolder, position: Int) {
         val food = cartList[position]
         val binding = holder.binding
-
         binding.cartFood = food
 
         showImage(food.yemek_resim_adi, mContext, binding.ivCartFood)
@@ -51,6 +51,7 @@ class CartAdapter(
         }
 
     }
+    // TODO transfer to view model
     fun calculatePrice(): Int{
         var price = 0
         for( f in cartList){

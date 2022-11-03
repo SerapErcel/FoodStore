@@ -6,14 +6,12 @@
         <variable
             name="homeFood"
             type="com.serapercel.foodstore.data.entity.Food" />
-
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/homeFoodCard"
