@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.serapercel.foodstore.R
-import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.FragmentCartBinding
 import com.serapercel.foodstore.ui.adapter.CartAdapter
 import com.serapercel.foodstore.ui.viewmodel.CartViewModel
@@ -34,6 +33,7 @@ class CartFragment : Fragment() {
         viewModel.cartList.observe(viewLifecycleOwner){
             val adapter = CartAdapter(requireContext(), it , viewModel)
             binding.rvCart.adapter= adapter
+            binding.totalPrice = adapter.calculatePrice()
         }
 
         return binding.root

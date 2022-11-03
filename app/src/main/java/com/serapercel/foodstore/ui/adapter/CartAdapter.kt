@@ -51,6 +51,13 @@ class CartAdapter(
         }
 
     }
+    fun calculatePrice(): Int{
+        var price = 0
+        for( f in cartList){
+            price += f.yemek_fiyat!! * f.yemek_siparis_adet!!
+        }
+        return price
+    }
 
     fun removeFood(sepet_yemek_id: Int, kullanici_adi: String) {
         viewModel.removeFood(sepet_yemek_id, kullanici_adi)

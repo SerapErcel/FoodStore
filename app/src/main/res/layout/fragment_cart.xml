@@ -11,6 +11,9 @@
             name="toolbarCartTitle"
             type="String" />
         <variable
+            name="totalPrice"
+            type="Integer" />
+        <variable
             name="cartFragment"
             type="com.serapercel.foodstore.ui.fragment.CartFragment" />
 
@@ -23,16 +26,16 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarCart"
-            app:title="@{toolbarCartTitle}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
+            android:fontFamily="@font/comfortaa"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            android:fontFamily="@font/comfortaa"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@{toolbarCartTitle}" />
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -50,22 +53,35 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvCart"
-                    android:adapter="@{cartAdapter}"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingBottom="100dp" />
+                    android:adapter="@{cartAdapter}"
+                    android:paddingBottom="100dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
             </LinearLayout>
         </ScrollView>
+
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/secondaryColor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/buttonConfirm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text='@{"Total: "+totalPrice.toString()+ " ₺"}' />
 
         <Button
             android:id="@+id/buttonConfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:fontFamily="@font/comfortaa"
             android:text="@string/confirm_cart"
             android:textStyle="bold"
-            android:fontFamily="@font/comfortaa"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
