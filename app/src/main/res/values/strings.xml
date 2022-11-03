@@ -12,4 +12,12 @@
     <string name="rising">Rising</string>
     <string name="decreasing">Decreasing</string>
     <string name="filter">Filter</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="login">LOGIN</string>
+    <string name="sign_up">SIGN UP</string>
 </resources>
