@@ -23,11 +23,15 @@ class FoodRepository(var fds: FoodDatasource) {
     suspend fun getCartFoods(kullanici_adi: String): List<CartFood> =
         fds.getCartFoods(kullanici_adi)
 
+    suspend fun updateCartFood(user: User, yemek_siparis_adet: Int, cartFood: CartFood) =
+        fds.updateCartFood(user, yemek_siparis_adet, cartFood)
+
     suspend fun searchFood(searchWord: String): List<Food> = fds.searchFood(searchWord)
 
     suspend fun sortedFoods(): List<Food> = fds.sortedFoods()
 
-    suspend fun showImage(imageName:String, context: Context, view: ImageView) = fds.showImage(imageName, context, view)
+    suspend fun showImage(imageName: String, context: Context, view: ImageView) =
+        fds.showImage(imageName, context, view)
 
 
 }
