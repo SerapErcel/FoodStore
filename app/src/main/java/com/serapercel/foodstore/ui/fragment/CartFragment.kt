@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import com.serapercel.foodstore.R
 import com.serapercel.foodstore.databinding.FragmentCartBinding
 import com.serapercel.foodstore.ui.adapter.CartAdapter
@@ -26,9 +25,6 @@ class CartFragment : Fragment() {
 
         binding.toolbarCartTitle = "Shopping Cart"
         binding.cartFragment = this
-
-        val bundle: CartFragmentArgs by navArgs()
-        val user = bundle.user
 
         viewModel.cartList.observe(viewLifecycleOwner){
             val adapter = CartAdapter(requireContext(), it , viewModel)

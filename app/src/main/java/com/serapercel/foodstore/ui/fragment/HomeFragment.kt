@@ -13,7 +13,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import com.serapercel.foodstore.R
-import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.FragmentHomeBinding
 import com.serapercel.foodstore.ui.adapter.FoodAdapter
 import com.serapercel.foodstore.ui.viewmodel.HomeViewModel
@@ -62,7 +61,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
         popupMenu.menuInflater.inflate(R.menu.filter_menu, popupMenu.menu)
 
-        popupMenu.setOnMenuItemClickListener() { menuItem ->
+        popupMenu.setOnMenuItemClickListener { menuItem ->
             return@setOnMenuItemClickListener when (menuItem.itemId) {
                 R.id.rising -> {
                     viewModel.foodList.value?.let {
@@ -84,10 +83,9 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             popupMenu.show()
         }
 
-        // TODO user transfer
         viewModel.foodList.observe(viewLifecycleOwner) {
             if (it != null) {
-                adapter = FoodAdapter(requireContext(), User(0, "serap", ""), viewModel)
+                adapter = FoodAdapter(requireContext(), user, viewModel)
                 adapter.foodList = it
                 binding.rvHome.adapter = adapter
             } else {

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.serapercel.foodstore.utils.user
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.serapercel.foodstore.MainActivity
@@ -68,7 +69,7 @@ class LoginFragment : Fragment() {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
                         val intent = Intent(activity, MainActivity::class.java)
-
+                        user.user_name = email
                         activity?.startActivity(intent)
                     } else {
                         Toast.makeText(

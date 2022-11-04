@@ -37,7 +37,6 @@ class DetailFragment : Fragment() {
         binding.detailFood = tFood
         binding.user = user
         binding.count = 1
-        //showImage(tFood.yemek_resim_adi, requireContext(), binding.imageViewFood)
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarDetail)
 
@@ -81,7 +80,7 @@ class DetailFragment : Fragment() {
     fun updateCount( number: String, char: Char) {
         var count = number.toInt()
         when (char) {
-            '-' -> count = count- 1
+            '-' -> count -= 1
             '+' -> count += 1
             else -> count = 1
         }
