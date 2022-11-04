@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "116852741366",
+    "project_id": "foodstore-f8820",
+    "storage_bucket": "foodstore-f8820.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116852741366:android:24d9f79bff6a78b60dc8d7",
+        "android_client_info": {
+          "package_name": "com.serapercel.foodstore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116852741366-4dinr01j7uf0au8c348dmgkhdgd81980.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARTUuGEWDqw3YupuvxfMVf_vPvHPsunaY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116852741366-4dinr01j7uf0au8c348dmgkhdgd81980.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

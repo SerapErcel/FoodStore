@@ -1,13 +1,13 @@
 package com.serapercel.foodstore.ui.onboarding.screens
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.serapercel.foodstore.MainActivity
+import androidx.navigation.fragment.findNavController
+import com.serapercel.foodstore.R
 import com.serapercel.foodstore.databinding.FragmentThirdBinding
 
 class ThirdFragment : Fragment() {
@@ -27,8 +27,7 @@ class ThirdFragment : Fragment() {
 
     private fun initClickListener() {
         binding.finishButton.setOnClickListener {
-            val intent = Intent(activity, MainActivity::class.java)
-            activity?.startActivity(intent)
+            findNavController().navigate(R.id.action_viewPagerFragment_to_signUpFragment)
             onBoardingFinished()
         }
     }

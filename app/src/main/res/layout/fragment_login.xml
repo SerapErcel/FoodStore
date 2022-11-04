@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/editTextEmailSignUp"
+        android:id="@+id/editTextEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -18,14 +18,14 @@
         android:fontFamily="@font/comfortaa"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPasswordSignUp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPsw"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
-        android:id="@+id/editTextPasswordSignUp"
+        android:id="@+id/editTextPsw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -37,7 +37,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailSignUp" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <TextView
         android:id="@+id/tvForgotPassword"
@@ -47,26 +47,26 @@
         android:fontFamily="@font/comfortaa"
         android:text="@string/forgot_password"
         android:textColor="@color/secondaryDarkColor"
-        app:layout_constraintEnd_toEndOf="@+id/editTextPasswordSignUp"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordSignUp" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextPsw"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPsw" />
 
     <Button
-        android:id="@+id/btnLoginSU"
+        android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:text="@string/login"
-        app:layout_constraintBottom_toTopOf="@+id/btnSignUpSU"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPsw"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
-        android:id="@+id/btnSignUpSU"
+        android:id="@+id/btnSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -77,14 +77,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLoginSU" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
     <ImageView
         android:id="@+id/ivSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/design"
-        app:layout_constraintBottom_toTopOf="@+id/editTextEmailSignUp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
