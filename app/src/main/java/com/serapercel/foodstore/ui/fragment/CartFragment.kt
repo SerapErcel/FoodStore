@@ -1,11 +1,11 @@
 package com.serapercel.foodstore.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -21,7 +21,7 @@ class CartFragment : Fragment() {
     private lateinit var viewModel: CartViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_cart,  container, false)
 
         binding.toolbarCartTitle = "Shopping Cart"
@@ -33,7 +33,7 @@ class CartFragment : Fragment() {
         viewModel.cartList.observe(viewLifecycleOwner){
             val adapter = CartAdapter(requireContext(), it , viewModel)
             binding.rvCart.adapter= adapter
-            binding.totalPrice = adapter.calculatePrice()
+            binding.totalPrice = viewModel.calculatePrice()
         }
 
         return binding.root
@@ -50,7 +50,7 @@ class CartFragment : Fragment() {
     }
 
     fun confirmCartButton(){
-        Log.e("Cart", "confirm")
+        Toast.makeText(requireContext(), "Your order is preparing!", Toast.LENGTH_LONG).show()
     }
 
 }

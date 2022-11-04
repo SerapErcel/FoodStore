@@ -26,7 +26,9 @@ class SplashFragment : Fragment() {
             {
                 if (onBoardingFinished()) {
                     if (auth.currentUser != null) {
+                        val currentUserEmail = auth.currentUser!!.email.toString()
                         val intent = Intent(requireActivity(), MainActivity::class.java)
+                        intent.putExtra("user_name", currentUserEmail)
                         requireActivity().startActivity(intent)
                         requireActivity().finish()
                     } else {

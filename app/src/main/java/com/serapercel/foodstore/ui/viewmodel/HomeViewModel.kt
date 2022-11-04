@@ -1,14 +1,9 @@
 package com.serapercel.foodstore.ui.viewmodel
 
-import android.content.Context
-import android.util.Log
-import android.widget.ImageView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bumptech.glide.Glide
 import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.repo.FoodRepository
-import com.serapercel.foodstore.url
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,13 +21,6 @@ class HomeViewModel @Inject constructor(var frepo: FoodRepository) : ViewModel()
     fun getFoods() {
         CoroutineScope(Dispatchers.Main).launch {
             foodList.value = frepo.getFoods()
-            Log.e("yemek", "wiev model get foods ${foodList.toString()}")
-        }
-    }
-    fun sortedFoods() {
-        CoroutineScope(Dispatchers.Main).launch {
-            foodList.value = frepo.sortedFoods()
-            Log.e("yemek", "wiev model ${foodList.toString()}")
         }
     }
 
@@ -42,12 +30,14 @@ class HomeViewModel @Inject constructor(var frepo: FoodRepository) : ViewModel()
         }
     }
 
-    fun showImage(imageName:String, context: Context, view: ImageView){
-        CoroutineScope(Dispatchers.Main).launch {
-            frepo.showImage(imageName, context, view)
-        }
+    fun sortFoodDecRising(list: List<Food>): List<Food> {
+        return list.sortedByDescending { it.yemek_fiyat.toInt() }
     }
 
-
+    fun sortFoodRising(list: List<Food>): List<Food> {
+        return list.sortedBy {
+            it.yemek_fiyat.toInt()
+        }
+    }
 
 }

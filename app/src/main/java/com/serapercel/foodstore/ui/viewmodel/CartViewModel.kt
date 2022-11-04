@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.serapercel.foodstore.data.entity.CartFood
 import com.serapercel.foodstore.data.repo.FoodRepository
-import com.serapercel.foodstore.user
+import com.serapercel.foodstore.utils.user
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +21,7 @@ class CartViewModel @Inject constructor(var frepo: FoodRepository) : ViewModel()
 
     fun getCartFoods() {
         CoroutineScope(Dispatchers.Main).launch {
-            cartList.value = frepo.getCartFoods(user.user_name )
+            cartList.value = frepo.getCartFoods(user.user_name)
         }
     }
 
@@ -29,6 +29,18 @@ class CartViewModel @Inject constructor(var frepo: FoodRepository) : ViewModel()
         CoroutineScope(Dispatchers.Main).launch {
             frepo.removeFood(sepet_yemek_id, kullanici_adi)
             getCartFoods()
+        }
+    }
+
+    fun calculatePrice(): Int {
+        var price = 0
+        return if (cartList.value == null) {
+            price
+        } else {
+            for (f in cartList.value!!) {
+                price += f.yemek_fiyat!! * f.yemek_siparis_adet!!
+            }
+            price
         }
     }
 

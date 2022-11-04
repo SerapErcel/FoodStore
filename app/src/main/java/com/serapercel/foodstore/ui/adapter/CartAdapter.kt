@@ -1,7 +1,6 @@
 package com.serapercel.foodstore.ui.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,7 +9,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.serapercel.foodstore.R
 import com.serapercel.foodstore.data.entity.CartFood
 import com.serapercel.foodstore.databinding.CartCardBinding
-import com.serapercel.foodstore.showImage
+import com.serapercel.foodstore.utils.showImage
 import com.serapercel.foodstore.ui.viewmodel.CartViewModel
 
 class CartAdapter(
@@ -41,7 +40,7 @@ class CartAdapter(
         val binding = holder.binding
         binding.cartFood = food
 
-        showImage(food.yemek_resim_adi, mContext, binding.ivCartFood)
+        binding.ivCartFood.showImage(food.yemek_resim_adi, mContext)
 
         binding.deleteCartFood.setOnClickListener {
             Snackbar.make(it, "Do you want remove ${food.yemek_adi}?", Snackbar.LENGTH_LONG)
@@ -49,15 +48,6 @@ class CartAdapter(
                     removeFood(food.sepet_yemek_id, food.kullanici_adi)
                 }.show()
         }
-
-    }
-    // TODO transfer to view model
-    fun calculatePrice(): Int{
-        var price = 0
-        for( f in cartList){
-            price += f.yemek_fiyat!! * f.yemek_siparis_adet!!
-        }
-        return price
     }
 
     fun removeFood(sepet_yemek_id: Int, kullanici_adi: String) {

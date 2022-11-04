@@ -1,7 +1,6 @@
 package com.serapercel.foodstore.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
 import android.widget.Toast
@@ -14,20 +13,23 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import com.serapercel.foodstore.R
+import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.FragmentHomeBinding
 import com.serapercel.foodstore.ui.adapter.FoodAdapter
 import com.serapercel.foodstore.ui.viewmodel.HomeViewModel
-import com.serapercel.foodstore.user
+import com.serapercel.foodstore.utils.user
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
+
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
+    private lateinit var adapter: FoodAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
         binding.homeFragment = this
@@ -61,18 +63,17 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         popupMenu.menuInflater.inflate(R.menu.filter_menu, popupMenu.menu)
 
         popupMenu.setOnMenuItemClickListener() { menuItem ->
-            Log.e("yemek", " on menu item selected")
             return@setOnMenuItemClickListener when (menuItem.itemId) {
                 R.id.rising -> {
-                    viewModel.sortedFoods()
-                    Toast.makeText(requireContext(), "click on Rising", Toast.LENGTH_SHORT)
-                        .show()
+                    viewModel.foodList.value?.let {
+                        adapter.foodList = viewModel.sortFoodRising(it)
+                    }
                     true
                 }
                 R.id.decreasing -> {
-                    viewModel.sortedFoods()
-                    Toast.makeText(requireContext(), "click on Decrasing", Toast.LENGTH_SHORT)
-                        .show()
+                    viewModel.foodList.value?.let {
+                        adapter.foodList = viewModel.sortFoodDecRising(it)
+                    }
                     true
                 }
                 else -> false
@@ -80,13 +81,14 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         }
 
         binding.filter.setOnClickListener {
-            Log.e("yemek", "filter click listener")
             popupMenu.show()
         }
 
+        // TODO user transfer
         viewModel.foodList.observe(viewLifecycleOwner) {
             if (it != null) {
-                val adapter = FoodAdapter(requireContext(), it, user, viewModel)
+                adapter = FoodAdapter(requireContext(), User(0, "serap", ""), viewModel)
+                adapter.foodList = it
                 binding.rvHome.adapter = adapter
             } else {
                 Toast.makeText(requireContext(), "List not found!", Toast.LENGTH_SHORT).show()
@@ -99,11 +101,6 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         super.onCreate(savedInstanceState)
         val tempViewModel: HomeViewModel by viewModels()
         viewModel = tempViewModel
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.getFoods()
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {

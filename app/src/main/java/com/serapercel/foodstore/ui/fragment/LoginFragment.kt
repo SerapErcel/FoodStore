@@ -2,7 +2,6 @@ package com.serapercel.foodstore.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.serapercel.foodstore.MainActivity
 import com.serapercel.foodstore.R
 import com.serapercel.foodstore.databinding.FragmentLoginBinding
-import com.serapercel.foodstore.databinding.FragmentSignUpBinding
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
@@ -21,7 +19,7 @@ class LoginFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -70,6 +68,7 @@ class LoginFragment : Fragment() {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
                         val intent = Intent(activity, MainActivity::class.java)
+
                         activity?.startActivity(intent)
                     } else {
                         Toast.makeText(

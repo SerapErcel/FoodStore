@@ -81,6 +81,7 @@
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/comfortaa"
             android:text="@string/confirm_cart"
+            android:onClick="@{() -> cartFragment.confirmCartButton()}"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
