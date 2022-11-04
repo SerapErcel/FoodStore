@@ -3,6 +3,7 @@ package com.serapercel.foodstore.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -36,17 +37,21 @@ class CartAdapter(
     }
 
     override fun onBindViewHolder(holder: CartCardViewHolder, position: Int) {
-        val food = cartList[position]
-        val binding = holder.binding
-        binding.cartFood = food
+        if (cartList.isEmpty()){
+            Toast.makeText(mContext, "Your shopping cart is empty!", Toast.LENGTH_LONG).show()
+        }else {
+            val food = cartList[position]
+            val binding = holder.binding
+            binding.cartFood = food
 
-        binding.ivCartFood.showImage(food.yemek_resim_adi, mContext)
+            binding.ivCartFood.showImage(food.yemek_resim_adi, mContext)
 
-        binding.deleteCartFood.setOnClickListener {
-            Snackbar.make(it, "Do you want remove ${food.yemek_adi}?", Snackbar.LENGTH_LONG)
-                .setAction("Yes") {
-                    removeFood(food.sepet_yemek_id, food.kullanici_adi)
-                }.show()
+            binding.deleteCartFood.setOnClickListener {
+                Snackbar.make(it, "Do you want remove ${food.yemek_adi}?", Snackbar.LENGTH_LONG)
+                    .setAction("Yes") {
+                        removeFood(food.sepet_yemek_id, food.kullanici_adi)
+                    }.show()
+            }
         }
     }
 

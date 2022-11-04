@@ -11,11 +11,20 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailViewModel @Inject constructor(var frepo : FoodRepository): ViewModel(){
+class DetailViewModel @Inject constructor(var frepo: FoodRepository) : ViewModel() {
 
     fun addCartList(user: User, yemek_siparis_adet: Int, food: Food) {
         CoroutineScope(Dispatchers.Main).launch {
-            frepo.addCartList(user, yemek_siparis_adet, food)
+            val list = frepo.getCartFoods(user.user_name)
+            var check = true
+            for (cartFood in list) {
+                if (cartFood.yemek_adi == food.yemek_adi) {
+                    check = false
+                    frepo.updateCartFood(user, yemek_siparis_adet, cartFood)
+                }
+            }
+            if (check) frepo.addCartList(user, yemek_siparis_adet, food)
+
         }
     }
 }

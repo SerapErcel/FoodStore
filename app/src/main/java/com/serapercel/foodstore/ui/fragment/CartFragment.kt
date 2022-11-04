@@ -27,9 +27,13 @@ class CartFragment : Fragment() {
         binding.cartFragment = this
 
         viewModel.cartList.observe(viewLifecycleOwner){
-            val adapter = CartAdapter(requireContext(), it , viewModel)
-            binding.rvCart.adapter= adapter
-            binding.totalPrice = viewModel.calculatePrice()
+            if (it == null){
+                Toast.makeText(requireContext(), "Your Shopping Cart is Empty!", Toast.LENGTH_LONG).show()
+            }else {
+                val adapter = CartAdapter(requireContext(), it, viewModel)
+                binding.rvCart.adapter = adapter
+                binding.totalPrice = viewModel.calculatePrice()
+            }
         }
 
         return binding.root

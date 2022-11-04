@@ -21,7 +21,11 @@ class CartViewModel @Inject constructor(var frepo: FoodRepository) : ViewModel()
 
     fun getCartFoods() {
         CoroutineScope(Dispatchers.Main).launch {
-            cartList.value = frepo.getCartFoods(user.user_name)
+            if (frepo.getCartFoods(user.user_name).isEmpty()){
+
+            }else {
+                cartList.value = frepo.getCartFoods(user.user_name)
+            }
         }
     }
 

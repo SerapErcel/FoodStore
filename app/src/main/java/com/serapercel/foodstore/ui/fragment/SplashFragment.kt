@@ -29,6 +29,12 @@ class SplashFragment : Fragment() {
                         val currentUserEmail = auth.currentUser!!.email.toString()
                         val intent = Intent(requireActivity(), MainActivity::class.java)
                         intent.putExtra("user_name", currentUserEmail)
+
+                        val sharedPref = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
+                        val editor = sharedPref.edit()
+                        editor.putString("user_name", currentUserEmail)
+                        editor.apply()
+
                         requireActivity().startActivity(intent)
                         requireActivity().finish()
                     } else {

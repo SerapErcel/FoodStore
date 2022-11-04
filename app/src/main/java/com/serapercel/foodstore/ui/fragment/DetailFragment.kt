@@ -12,10 +12,12 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.serapercel.foodstore.R
+import com.serapercel.foodstore.utils.user
 import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.FragmentDetailBinding
 import com.serapercel.foodstore.ui.viewmodel.DetailViewModel
+import com.serapercel.foodstore.utils.showImage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,11 +34,12 @@ class DetailFragment : Fragment() {
 
         val bundle: DetailFragmentArgs by navArgs()
         val tFood = bundle.food
-        val user = bundle.user
 
         binding.detailFood = tFood
         binding.user = user
         binding.count = 1
+
+        binding.imageViewFood.showImage(tFood.yemek_resim_adi, requireContext())
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarDetail)
 
@@ -50,11 +53,6 @@ class DetailFragment : Fragment() {
                     R.id.action_detail_cart -> {
                         val transfer = DetailFragmentDirections.goToCartFromDetail(user = user)
                         Navigation.findNavController(binding.toolbarDetail).navigate(transfer)
-                        Toast.makeText(
-                            requireContext(),
-                            "click on cartFragment",
-                            Toast.LENGTH_SHORT
-                        ).show()
                         true
                     }
                     else -> false

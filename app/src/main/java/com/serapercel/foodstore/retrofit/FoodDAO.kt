@@ -3,10 +3,8 @@ package com.serapercel.foodstore.retrofit
 import com.serapercel.foodstore.data.entity.CRUDAnswer
 import com.serapercel.foodstore.data.entity.CartAnswer
 import com.serapercel.foodstore.data.entity.Foods
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
+
 
 interface FoodDAO {
     // http://kasimadalan.pe.hu/yemekler/tumYemekleriGetir.php
@@ -17,6 +15,7 @@ interface FoodDAO {
     @POST("yemekler/sepettekiYemekleriGetir.php")
     @FormUrlEncoded
     suspend fun getCartFoods(@Field("kullanici_adi") kullanici_adi: String): CartAnswer
+
 
     @POST("yemekler/sepeteYemekEkle.php")
     @FormUrlEncoded

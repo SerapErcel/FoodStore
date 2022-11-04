@@ -1,5 +1,6 @@
 package com.serapercel.foodstore
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
@@ -13,5 +14,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         user.user_name = intent.getStringExtra("user_name").toString()
+
+        val sharedPref = this.getSharedPreferences("user", Context.MODE_PRIVATE)
+        user.user_name = sharedPref.getString("user_name", user.user_name).toString()
     }
 }
