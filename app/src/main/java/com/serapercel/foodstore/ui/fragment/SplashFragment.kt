@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.serapercel.foodstore.MainActivity
 import com.serapercel.foodstore.R
+import com.serapercel.foodstore.utils.user
 
 
 class SplashFragment : Fragment() {
@@ -26,17 +27,9 @@ class SplashFragment : Fragment() {
             {
                 if (onBoardingFinished()) {
                     if (auth.currentUser != null) {
-                        val currentUserEmail = auth.currentUser!!.email.toString()
-                        val intent = Intent(requireActivity(), MainActivity::class.java)
-                        intent.putExtra("user_name", currentUserEmail)
-
-                        val sharedPref = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE)
-                        val editor = sharedPref.edit()
-                        editor.putString("user_name", currentUserEmail)
-                        editor.apply()
-
-                        requireActivity().startActivity(intent)
-                        requireActivity().finish()
+                        val intent = Intent(activity, MainActivity::class.java)
+                        activity?.startActivity(intent)
+                        activity?.finish()
                     } else {
                         findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
                     }

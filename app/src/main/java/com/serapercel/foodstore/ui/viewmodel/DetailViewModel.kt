@@ -14,6 +14,7 @@ import javax.inject.Inject
 class DetailViewModel @Inject constructor(var frepo: FoodRepository) : ViewModel() {
 
     fun addCartList(user: User, yemek_siparis_adet: Int, food: Food) {
+
         CoroutineScope(Dispatchers.Main).launch {
             val list = frepo.getCartFoods(user.user_name)
             var check = true

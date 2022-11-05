@@ -5,7 +5,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.serapercel.foodstore.data.entity.User
 
-var user = User(1, "Anonymous", "password")
+var user = User(1, "aaa", "password")
 
 val url = "http://kasimadalan.pe.hu/yemekler/resimler/"
 

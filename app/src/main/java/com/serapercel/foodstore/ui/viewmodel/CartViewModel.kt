@@ -3,6 +3,7 @@ package com.serapercel.foodstore.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.serapercel.foodstore.data.entity.CartFood
+import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.data.repo.FoodRepository
 import com.serapercel.foodstore.utils.user
 import dagger.hilt.android.lifecycle.HiltViewModel

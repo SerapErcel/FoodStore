@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.serapercel.foodstore.R
 import com.serapercel.foodstore.databinding.FragmentCartBinding
 import com.serapercel.foodstore.ui.adapter.CartAdapter
@@ -22,6 +23,9 @@ class CartFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_cart,  container, false)
+
+        val bundle: CartFragmentArgs by navArgs()
+        val user = bundle.user
 
         binding.toolbarCartTitle = "Shopping Cart"
         binding.cartFragment = this

@@ -1,5 +1,6 @@
 package com.serapercel.foodstore.ui.fragment
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -69,7 +70,6 @@ class LoginFragment : Fragment() {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
                         val intent = Intent(activity, MainActivity::class.java)
-                        user.user_name = email
                         activity?.startActivity(intent)
                     } else {
                         Toast.makeText(

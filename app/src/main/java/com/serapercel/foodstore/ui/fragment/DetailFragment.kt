@@ -34,9 +34,10 @@ class DetailFragment : Fragment() {
 
         val bundle: DetailFragmentArgs by navArgs()
         val tFood = bundle.food
+        val user1=bundle.user
 
         binding.detailFood = tFood
-        binding.user = user
+        binding.user = user1
         binding.count = 1
 
         binding.imageViewFood.showImage(tFood.yemek_resim_adi, requireContext())
@@ -51,7 +52,7 @@ class DetailFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.action_detail_cart -> {
-                        val transfer = DetailFragmentDirections.goToCartFromDetail(user = user)
+                        val transfer = DetailFragmentDirections.goToCartFromDetail(user = user1)
                         Navigation.findNavController(binding.toolbarDetail).navigate(transfer)
                         true
                     }
@@ -71,6 +72,7 @@ class DetailFragment : Fragment() {
     }
 
     fun addCartList(user: User, yemek_siparis_adet: String, food: Food) {
+        val user1 = User(1, "aaa", "123456")
         viewModel.addCartList(user, yemek_siparis_adet.toInt(), food)
     }
 

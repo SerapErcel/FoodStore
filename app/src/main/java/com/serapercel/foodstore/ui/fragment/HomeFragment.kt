@@ -87,6 +87,8 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             if (it != null) {
                 adapter = FoodAdapter(requireContext(), user, viewModel)
                 adapter.foodList = it
+                // dene
+                adapter.user = user
                 binding.rvHome.adapter = adapter
             } else {
                 Toast.makeText(requireContext(), "List not found!", Toast.LENGTH_SHORT).show()

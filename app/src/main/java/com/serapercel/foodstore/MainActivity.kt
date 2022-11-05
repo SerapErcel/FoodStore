@@ -13,9 +13,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        user.user_name = intent.getStringExtra("user_name").toString()
-
-        val sharedPref = this.getSharedPreferences("user", Context.MODE_PRIVATE)
-        user.user_name = sharedPref.getString("user_name", user.user_name).toString()
     }
 }
