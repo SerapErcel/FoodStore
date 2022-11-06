@@ -28,7 +28,7 @@
     <string name="preparing_order">Siparişiniz hazırlanıyor!</string>
     <string name="want_remove">Silmek istiyor musunuz</string>
     <string name="count">Tane</string>
-    <string name="totel">Toplam</string>
+    <string name="total">Toplam</string>
 
 
 </resources>

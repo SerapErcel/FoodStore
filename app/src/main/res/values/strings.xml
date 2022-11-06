@@ -28,5 +28,5 @@
     <string name="preparing_order">Your order is preparing!</string>
     <string name="want_remove">Do you want remove</string>
     <string name="count">Piece</string>
-    <string name="totel">Total</string>
+    <string name="total">Total</string>
 </resources>
