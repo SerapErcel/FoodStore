@@ -94,7 +94,11 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
                 adapter.user = user
                 binding.rvHome.adapter = adapter
             } else {
-                Toast.makeText(requireContext(), getString(R.string.list_not_found), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.list_not_found),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         return binding.root
@@ -107,12 +111,17 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {
-        viewModel.searchFood(query)
+
+        viewModel.foodList.value?.let {
+            adapter.foodList = viewModel.searchFood(query)
+        }
         return true
     }
 
     override fun onQueryTextChange(newText: String): Boolean {
-        viewModel.searchFood(newText)
+        viewModel.foodList.value?.let {
+            adapter.foodList = viewModel.searchFood(newText)
+        }
         return true
     }
 
