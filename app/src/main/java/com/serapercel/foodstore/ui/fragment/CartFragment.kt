@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.serapercel.foodstore.R
 import com.serapercel.foodstore.databinding.FragmentCartBinding
@@ -43,6 +45,17 @@ class CartFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_cartFragment_to_homeFragment)
+                }
+
+            })
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tempViewModel: CartViewModel by viewModels()
@@ -55,6 +68,7 @@ class CartFragment : Fragment() {
 
     fun confirmCartButton(){
         Toast.makeText(requireContext(), getString(R.string.preparing_order), Toast.LENGTH_LONG).show()
+        findNavController().navigate(R.id.action_cartFragment_to_homeFragment)
     }
 
 }
