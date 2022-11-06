@@ -16,6 +16,10 @@
         android:theme="@style/Theme.FoodStore"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo_API_KEY"
+            android:value="AIzaSyDyynJC04P_USAWmzvMZ-y29sOXv6vUVR8" />
+
         <activity
             android:name=".StarterActivity"
             android:exported="true">
