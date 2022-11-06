@@ -21,6 +21,4 @@ class FoodRepository(var fds: FoodDatasource) {
     suspend fun updateCartFood(user: User, yemek_siparis_adet: Int, cartFood: CartFood) =
         fds.updateCartFood(user, yemek_siparis_adet, cartFood)
 
-    suspend fun searchFood(searchWord: String): List<Food> = fds.searchFood(searchWord)
-
 }
