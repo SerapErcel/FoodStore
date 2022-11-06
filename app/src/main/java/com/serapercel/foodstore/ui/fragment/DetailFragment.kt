@@ -71,7 +71,8 @@ class DetailFragment : Fragment() {
 
     fun addCartList(user: User, yemek_siparis_adet: String, food: Food) {
         viewModel.addCartList(user, yemek_siparis_adet.toInt(), food)
-    }
+        val transfer = DetailFragmentDirections.goToCartFromDetail(user)
+        Navigation.findNavController(binding.toolbarDetail).navigate(transfer)    }
 
     fun updateCount( number: String, char: Char) {
         var count = number.toInt()
