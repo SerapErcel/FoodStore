@@ -55,7 +55,7 @@
                     android:id="@+id/rvCart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingBottom="100dp"
+                    android:paddingBottom="200dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
             </LinearLayout>
         </ScrollView>
@@ -65,13 +65,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:textColor="@color/secondaryColor"
+            android:background="@color/secondaryTransparentColor"
+            android:fontFamily="@font/comfortaa"
+            android:text='@{@string/total+ ": " +totalPrice.toString()+ " ₺"}'
+            android:textColor="@color/secondaryDarkColor"
             android:textSize="24sp"
             android:textStyle="bold"
+            app:circularflow_radiusInDP="8dp"
             app:layout_constraintBottom_toTopOf="@+id/buttonConfirm"
+            app:layout_constraintCircleRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text='@{@string/total+ ": " +totalPrice.toString()+ " ₺"}' />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/buttonConfirm"

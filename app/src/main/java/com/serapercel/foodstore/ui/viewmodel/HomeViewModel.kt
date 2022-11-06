@@ -24,11 +24,6 @@ class HomeViewModel @Inject constructor(var frepo: FoodRepository) : ViewModel()
         }
     }
 
-    fun searchFood(searchWord: String) {
-        CoroutineScope(Dispatchers.Main).launch {
-            foodList.value = frepo.searchFood(searchWord)
-        }
-    }
 
     fun sortFoodDecRising(list: List<Food>): List<Food> {
         return list.sortedByDescending { it.yemek_fiyat.toInt() }
@@ -38,6 +33,16 @@ class HomeViewModel @Inject constructor(var frepo: FoodRepository) : ViewModel()
         return list.sortedBy {
             it.yemek_fiyat.toInt()
         }
+    }
+
+    fun searchFood(aramaKelimesi: String): List<Food> {
+        val newList= ArrayList<Food>()
+        for (food in foodList.value!!) {
+            if (food.yemek_adi.lowercase().contains(aramaKelimesi.lowercase()) ) {
+                newList.add(food)
+            }
+        }
+        return newList.toList()
     }
 
 }
