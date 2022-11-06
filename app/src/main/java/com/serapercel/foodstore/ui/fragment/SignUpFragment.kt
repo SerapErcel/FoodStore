@@ -1,7 +1,6 @@
 package com.serapercel.foodstore.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +19,7 @@ class SignUpFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSignUpBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -45,8 +44,6 @@ class SignUpFragment : Fragment() {
             if (email.isNotEmpty() && password.isNotEmpty() && name.isNotEmpty()) {
                 firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        Log.e("sign up", "sign up with email and password $password")
-
                         findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
                     } else {
                         Toast.makeText(
@@ -57,7 +54,7 @@ class SignUpFragment : Fragment() {
                     }
                 }
             } else {
-                Toast.makeText(requireContext(), "Empty files are not allowed!", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), getString(R.string.empty_files), Toast.LENGTH_SHORT)
                     .show()
             }
         }

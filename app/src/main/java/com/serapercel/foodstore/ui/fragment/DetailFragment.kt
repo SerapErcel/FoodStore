@@ -2,7 +2,6 @@ package com.serapercel.foodstore.ui.fragment
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
@@ -12,7 +11,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.serapercel.foodstore.R
-import com.serapercel.foodstore.utils.user
 import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.entity.User
 import com.serapercel.foodstore.databinding.FragmentDetailBinding
@@ -72,10 +70,8 @@ class DetailFragment : Fragment() {
     }
 
     fun addCartList(user: User, yemek_siparis_adet: String, food: Food) {
-        val user1 = User(1, "aaa", "123456")
         viewModel.addCartList(user, yemek_siparis_adet.toInt(), food)
     }
-
 
     fun updateCount( number: String, char: Char) {
         var count = number.toInt()

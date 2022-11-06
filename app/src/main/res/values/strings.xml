@@ -19,6 +19,14 @@
     <string name="login">LOGIN</string>
     <string name="sign_up">SIGN UP</string>
     <string name="empty_files">"Empty files are not allowed!"</string>
-
-
+    <string name="reset_link">Reset link sent!</string>
+    <string name="enter_email">Enter your Email!</string>
+    <string name="home">Foods</string>
+    <string name="list_not_found">List not Found!</string>
+    <string name="cart">Shopping Cart</string>
+    <string name="empty_cart">Your Shopping Cart is Empty!</string>
+    <string name="preparing_order">Your order is preparing!</string>
+    <string name="want_remove">Do you want remove</string>
+    <string name="count">Piece</string>
+    <string name="totel">Total</string>
 </resources>

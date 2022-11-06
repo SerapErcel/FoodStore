@@ -79,7 +79,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/comfortaa"
-                        android:text='@{cartFood.yemek_siparis_adet.toString() + " Adet"}' />
+                        android:text='@{cartFood.yemek_siparis_adet.toString() +" "+ @string/count }' />
 
                     <TextView
                         android:id="@+id/tvCartFoodPrice"

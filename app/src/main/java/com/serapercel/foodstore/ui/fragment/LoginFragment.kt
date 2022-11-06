@@ -1,6 +1,5 @@
 package com.serapercel.foodstore.ui.fragment
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.serapercel.foodstore.utils.user
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.serapercel.foodstore.MainActivity
@@ -44,7 +42,7 @@ class LoginFragment : Fragment() {
                     if (it.isSuccessful) {
                         Toast.makeText(
                             requireContext(),
-                            "Reset link send!",
+                            getString(R.string.reset_link),
                             Toast.LENGTH_SHORT
                         ).show()
                     } else {
@@ -58,7 +56,7 @@ class LoginFragment : Fragment() {
             } else {
                 Toast.makeText(
                     requireContext(),
-                    "Enter your Email!",
+                    getString(R.string.enter_email),
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -80,7 +78,7 @@ class LoginFragment : Fragment() {
                     }
                 }
             } else {
-                Toast.makeText(requireContext(), "Empty files are not allowed!", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), getString(R.string.empty_files), Toast.LENGTH_SHORT)
                     .show()
             }
         }

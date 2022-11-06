@@ -19,6 +19,16 @@
     <string name="login">Giriş Yap</string>
     <string name="sign_up">Kayıt Ol</string>
     <string name="empty_files">"Boş alanları Doldurun!"</string>
+    <string name="reset_link">Sıfırlama bağlantısı gönderildi!</string>
+    <string name="enter_email">Email adresinizi girin!</string>
+    <string name="home">Yiyecekler</string>
+    <string name="list_not_found">Liste bulunamadı!</string>
+    <string name="cart">Alışveriş Sepetim</string>
+    <string name="empty_cart">Alışveriş Sepetin Boş!</string>
+    <string name="preparing_order">Siparişiniz hazırlanıyor!</string>
+    <string name="want_remove">Silmek istiyor musunuz</string>
+    <string name="count">Tane</string>
+    <string name="totel">Toplam</string>
 
 
 </resources>

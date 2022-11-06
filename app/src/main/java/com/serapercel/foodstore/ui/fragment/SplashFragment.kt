@@ -13,8 +13,6 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.serapercel.foodstore.MainActivity
 import com.serapercel.foodstore.R
-import com.serapercel.foodstore.utils.user
-
 
 class SplashFragment : Fragment() {
     private lateinit var auth: FirebaseAuth

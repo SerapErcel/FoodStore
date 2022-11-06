@@ -38,7 +38,7 @@ class CartAdapter(
 
     override fun onBindViewHolder(holder: CartCardViewHolder, position: Int) {
         if (cartList.isEmpty()){
-            Toast.makeText(mContext, "Your shopping cart is empty!", Toast.LENGTH_LONG).show()
+            Toast.makeText(mContext, mContext.getString(R.string.empty_cart), Toast.LENGTH_LONG).show()
         }else {
             val food = cartList[position]
             val binding = holder.binding
@@ -47,7 +47,7 @@ class CartAdapter(
             binding.ivCartFood.showImage(food.yemek_resim_adi, mContext)
 
             binding.deleteCartFood.setOnClickListener {
-                Snackbar.make(it, "Do you want remove ${food.yemek_adi}?", Snackbar.LENGTH_LONG)
+                Snackbar.make(it, mContext.getString(R.string.want_remove)+" ${food.yemek_adi}?", Snackbar.LENGTH_LONG)
                     .setAction("Yes") {
                         removeFood(food.sepet_yemek_id, food.kullanici_adi)
                     }.show()

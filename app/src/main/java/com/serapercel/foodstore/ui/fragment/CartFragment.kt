@@ -27,12 +27,12 @@ class CartFragment : Fragment() {
         val bundle: CartFragmentArgs by navArgs()
         val user = bundle.user
 
-        binding.toolbarCartTitle = "Shopping Cart"
+        binding.toolbarCartTitle = getString(R.string.cart)
         binding.cartFragment = this
 
         viewModel.cartList.observe(viewLifecycleOwner){
             if (it == null){
-                Toast.makeText(requireContext(), "Your Shopping Cart is Empty!", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), getString(R.string.empty_cart), Toast.LENGTH_LONG).show()
             }else {
                 val adapter = CartAdapter(requireContext(), it, viewModel)
                 binding.rvCart.adapter = adapter
@@ -54,7 +54,7 @@ class CartFragment : Fragment() {
     }
 
     fun confirmCartButton(){
-        Toast.makeText(requireContext(), "Your order is preparing!", Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), getString(R.string.preparing_order), Toast.LENGTH_LONG).show()
     }
 
 }

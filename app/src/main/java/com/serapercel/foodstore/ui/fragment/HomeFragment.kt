@@ -32,7 +32,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
         binding.homeFragment = this
-        binding.toolbarHomeTitle = "Foods"
+        binding.toolbarHomeTitle = getString(R.string.home)
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarHome)
 
@@ -87,11 +87,10 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             if (it != null) {
                 adapter = FoodAdapter(requireContext(), user, viewModel)
                 adapter.foodList = it
-                // dene
                 adapter.user = user
                 binding.rvHome.adapter = adapter
             } else {
-                Toast.makeText(requireContext(), "List not found!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.list_not_found), Toast.LENGTH_SHORT).show()
             }
         }
         return binding.root
