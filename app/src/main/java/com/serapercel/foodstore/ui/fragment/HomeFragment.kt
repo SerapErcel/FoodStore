@@ -52,6 +52,10 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
                         Navigation.findNavController(binding.toolbarHome).navigate(transfer)
                         true
                     }
+                    R.id.action_search -> {
+                        binding.filter.visibility = View.INVISIBLE
+                        false
+                    }
                     else -> false
                 }
             }
