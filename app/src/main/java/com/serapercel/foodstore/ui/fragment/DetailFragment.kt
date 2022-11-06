@@ -1,6 +1,7 @@
 package com.serapercel.foodstore.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -73,6 +74,8 @@ class DetailFragment : Fragment() {
 
     fun addCartList(user: User, yemek_siparis_adet: String, food: Food) {
         val user1 = User(1, "aaa", "123456")
+        Log.e("hataa", " detail "+com.serapercel.foodstore.utils.user.user_name)
+
         viewModel.addCartList(user, yemek_siparis_adet.toInt(), food)
     }
 

@@ -37,7 +37,7 @@ class SignUpFragment : Fragment() {
             findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
         }
 
-        binding.btnSignUpSU.setOnClickListener {
+        binding.btnSignSU.setOnClickListener {
             val name = binding.editTextNameSignUp.text.toString()
             val email = binding.editTextEmailSignUp.text.toString()
             val password = binding.editTextPasswordSignUp.text.toString()

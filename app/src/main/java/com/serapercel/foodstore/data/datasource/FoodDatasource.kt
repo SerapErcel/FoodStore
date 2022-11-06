@@ -1,5 +1,6 @@
 package com.serapercel.foodstore.data.datasource
 
+import android.util.Log
 import com.serapercel.foodstore.data.entity.CartFood
 import com.serapercel.foodstore.data.entity.Food
 import com.serapercel.foodstore.data.entity.User
@@ -11,6 +12,8 @@ import kotlinx.coroutines.withContext
 class FoodDatasource(var fdao: FoodDAO) {
 
     suspend fun addCartList(user: User, yemek_siparis_adet: Int, food: Food) {
+        Log.e("hataa", " datasource "+com.serapercel.foodstore.utils.user.user_name)
+
         fdao.addCart(
             food.yemek_adi,
             food.yemek_resim_adi,
@@ -18,6 +21,7 @@ class FoodDatasource(var fdao: FoodDAO) {
             yemek_siparis_adet,
             user.user_name
         )
+
     }
 
     /*suspend fun addCartList(user: User, yemek_siparis_adet: Int, cartfood: CartFood) {

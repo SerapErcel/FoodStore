@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +29,9 @@ class SplashFragment : Fragment() {
                 if (onBoardingFinished()) {
                     if (auth.currentUser != null) {
                         val intent = Intent(activity, MainActivity::class.java)
+                        intent.putExtra("name", auth.currentUser!!.email.toString())
+                        user.user_name = auth.currentUser!!.email!!
+                        Log.e("hataa", user.user_name)
                         activity?.startActivity(intent)
                         activity?.finish()
                     } else {

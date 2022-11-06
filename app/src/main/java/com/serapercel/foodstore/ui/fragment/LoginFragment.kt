@@ -70,6 +70,8 @@ class LoginFragment : Fragment() {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
                         val intent = Intent(activity, MainActivity::class.java)
+                        intent.putExtra("name", email)
+                        user.user_name = email
                         activity?.startActivity(intent)
                     } else {
                         Toast.makeText(
