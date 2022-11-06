@@ -11,49 +11,42 @@
         android:id="@+id/imageView1"
         android:layout_width="91dp"
         android:layout_height="113dp"
+        android:contentDescription="@string/design"
         android:scaleType="fitXY"
         android:src="@drawable/onboarding2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/design" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!--
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieAnimationView2"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="64dp"
-        android:elevation="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/third_animation" />
-    -->
 
     <ImageView
         android:id="@+id/ivOrder"
-        android:layout_width="250dp"
+        android:layout_width="0dp"
         android:layout_height="250dp"
-        android:layout_marginTop="128dp"
+        android:contentDescription="@string/design"
         android:elevation="5dp"
         android:src="@drawable/order"
+        app:layout_constraintBottom_toTopOf="@+id/onboardingDesc2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/design" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/onboardingDesc2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/comfortaa"
         android:text="@string/onboarding_description_2"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivOrder" />
 
@@ -63,6 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/secondaryColor"
+        android:fontFamily="@font/comfortaa"
         android:text="@string/next"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,10 +67,10 @@
         android:id="@+id/imageView2"
         android:layout_width="189dp"
         android:layout_height="501dp"
+        android:contentDescription="@string/design"
         android:scaleType="fitEnd"
         android:src="@drawable/onboarding3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/design" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
