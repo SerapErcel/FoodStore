@@ -8,14 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <!-- App Colors -->
-    <color name="primaryColor">#b71c1c</color>
-    <color name="primaryLightColor">#f05545</color>
-    <color name="primaryDarkColor">#7f0000</color>
-    <color name="secondaryColor">#0277bd</color>
-    <color name="secondaryLightColor">#58a5f0</color>
-    <color name="secondaryDarkColor">#004c8c</color>
+    <color name="primaryColor">#455a64</color>
+    <color name="primaryLightColor">#718792</color>
+    <color name="primaryDarkColor">#1c313a</color>
+    <color name="secondaryColor">#ef5350</color>
+    <color name="secondaryLightColor">#ff867c</color>
+    <color name="secondaryDarkColor">#b61827</color>
     <color name="primaryTextColor">#ffffff</color>
-    <color name="secondaryTextColor">#ffffff</color>
-    <color name="secondaryTransparentColor">#8058a5f0</color>
+    <color name="secondaryTextColor">#000000</color>
+    <color name="secondaryTransparentColor">#80ef5350</color>
 
 </resources>
