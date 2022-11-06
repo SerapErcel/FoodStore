@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Food Store</string>
+    <string name="confirm_cart">Sepeti Onayla</string>
+    <string name="first_onboarding_description">Seçenekleri değerlendirin ve istediğiniz yiyecekleri seçin.</string>
+    <string name="onboarding_description_2">Siparişiniz özenle hazırlansın.</string>
+    <string name="onboarding_description_3">Sıcacık yiyecekleriniz kapınıza hızla teslim edilsin.</string>
+    <string name="finish">Bitir</string>
+    <string name="next">Sonraki</string>
+    <string name="design">design</string>
+    <string name="food_store">Food Store</string>
+    <string name="add_cart">Sepete Ekle</string>
+    <string name="rising">Fiyata Göre Artan</string>
+    <string name="decreasing">Fiyata Göre Azalan</string>
+    <string name="filter">Fiyata Göre Filtreleme</string>
+    <string name="name">İsim</string>
+    <string name="email">Email</string>
+    <string name="password">Parola</string>
+    <string name="forgot_password">Parolamı Unuttum</string>
+    <string name="login">Giriş Yap</string>
+    <string name="sign_up">Kayıt Ol</string>
+    <string name="empty_files">"Boş alanları Doldurun!"</string>
+
+
+</resources>

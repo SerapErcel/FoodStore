@@ -1,23 +1,24 @@
 <resources>
-    <string name="app_name">FoodStore</string>
+    <string name="app_name">Food Store</string>
     <string name="confirm_cart">Confirm Cart</string>
-    <string name="first_onboarding_description">First Onboarding Description</string>
-    <string name="onboarding_description_2">Onboarding Description 2</string>
-    <string name="onboarding_description_3">Onboarding Description 3</string>
-    <string name="finish">Finish</string>
-    <string name="next">Next</string>
+    <string name="first_onboarding_description">Evaluate the options and choose the foods you want.</string>
+    <string name="onboarding_description_2">Prepare your order with care.</string>
+    <string name="onboarding_description_3">Let your warm food be delivered to your door quickly.</string>
+    <string name="finish">FINISH</string>
+    <string name="next">NEXT</string>
     <string name="design">design</string>
     <string name="food_store">Food Store</string>
     <string name="add_cart">Add Cart</string>
     <string name="rising">Rising</string>
     <string name="decreasing">Decreasing</string>
-    <string name="filter">Filter</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="filter">Filter by Price</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="login">LOGIN</string>
     <string name="sign_up">SIGN UP</string>
+    <string name="empty_files">"Empty files are not allowed!"</string>
+
+
 </resources>
